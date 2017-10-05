@@ -116,12 +116,7 @@ Game.prototype = {
       this.score = Game().score;
       },
 
-    moveUp : function(){
-
-      var curX = this.curLocation[0];
-      var curY = this.curLocation[1];
-      var newY = (curY+YDIM -1)%YDIM;
-      var oldtype = this.model[curX][newY];
+    stepOn : function(oldtype) {
       if (oldtype === 1){
         this.message ="Ran into a monster. -1 HP.";
         this.injure(1);
@@ -139,6 +134,16 @@ Game.prototype = {
         alert("Found the secret SECRET COLLECT easter egg!") 
 
       }
+
+    },
+
+    moveUp : function(){
+
+      var curX = this.curLocation[0];
+      var curY = this.curLocation[1];
+      var newY = (curY+YDIM -1)%YDIM;
+      var oldtype = this.model[curX][newY];
+      this.stepOn(oldtype);
 
 
       this.model[curX][curY] = 0;
@@ -151,23 +156,7 @@ Game.prototype = {
       var curY = this.curLocation[1];
       var newY = (curY+YDIM +1)%YDIM;
       var oldtype = this.model[curX][newY];
-      if (oldtype === 1){
-        this.message ="Ran into a monster. -1 HP.";
-        this.injure(1);
-      } else if (oldtype === 4){
-        this.message ="You kick The Cheat. Plus 10 points.";
-        this.changeScore(10);
-      }else if (oldtype === 3){
-        this.message ="Put out fire with your face. Minus 3 health.";
-        this.injure(3);
-      }else if (oldtype === 2){
-        this.message ="Somehow stepped on owndangself. Plus 1,000,000,000 points! (but -1 health)";
-        this.changeScore(1000000);
-        this.health =  this.health -1;
-      }else if (oldtype === 100){
-        alert("Found the secret SECRET COLLECT easter egg!") 
-
-      }
+      this.stepOn(oldtype);
 
 
       this.model[curX][curY] = 0 ;
@@ -180,23 +169,7 @@ Game.prototype = {
       var curY = this.curLocation[1];
       var newX = (curX+XDIM -1)%XDIM;
       var oldtype = this.model[newX][curY];
-      if (oldtype === 1){
-        this.message ="Ran into a monster. -1 HP.";
-        this.injure(1);
-      } else if (oldtype === 4){
-        this.message ="You kick The Cheat. Plus 10 points.";
-        this.changeScore(10);
-      }else if (oldtype === 3){
-        this.message ="Put out fire with your face. Minus 3 health.";
-        this.injure(3);
-      }else if (oldtype === 2){
-        this.message ="Somehow stepped on owndangself. Plus 1,000,000,000 points! (but -1 health)";
-        this.changeScore(1000000);
-        this.injure(1);
-      }else if (oldtype === 100){
-        alert("Found the secret SECRET COLLECT easter egg! Find 12 and something good might happen.") 
-
-      }
+      this.stepOn(oldtype);
 
 
       this.model[curX][curY] = 0 ;
@@ -209,23 +182,7 @@ Game.prototype = {
       var curY = this.curLocation[1];
       var newX = (curX+XDIM +1)%XDIM;
       var oldtype = this.model[newX][curY];
-      if (oldtype === 1){
-        this.message ="Ran into a monster. -1 HP.";
-        this.injure(1);
-      } else if (oldtype === 4){
-        this.message ="You kick The Cheat. Plus 10 points.";
-        this.changeScore(10);
-      }else if (oldtype === 3){
-        this.message ="Put out fire with your face. Minus 3 health.";
-        this.injure(3);
-      }else if (oldtype === 2){
-        this.message ="Somehow stepped on owndangself. Plus 1,000,000,000 points! (but -1 health)";
-        this.changeScore(1000000);
-        this.injure(1);
-      }else if (oldtype === 100){
-        alert("Found the secret SECRET COLLECT easter egg!") 
-
-      }
+      this.stepOn(oldtype);
 
 
       this.model[curX][curY] = 0 ;

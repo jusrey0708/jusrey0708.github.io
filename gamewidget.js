@@ -74,7 +74,7 @@ function newgame() {
 
 // help
 function about() {
-	alert("A crappy fangame made by Aureo Speedwagon. October 4, 2017.")
+	alert("A crappy fangame made by /u/Aureo_Speedwagon aka @carpforbrains. October 4, 2017. \n Updated Oct 5, 2017. Current Version 1.1.")
 }
 
 
