@@ -1,5 +1,6 @@
 var gamemodel = Game();
 var scale = 25;
+var FIREColor = "#FF4500";
 
 
 //draws the model onto a canvas
@@ -25,13 +26,37 @@ for (var i=0; i < XDIM; i++){
 
 		}
 		if (gamemodel.model[i][j] === 3){
-			canM.fillStyle = "#FF4500";
+			determineFireColor();
+			canM.fillStyle = FIREColor;
+			canM.fillRect(scale*i,scale*j, scale, scale);
+		}
+
+		if (gamemodel.model[i][j] === 5){
+			canM.fillStyle = "#0BE8D9";
 			canM.fillRect(scale*i,scale*j, scale, scale);
 		}
 
 		if (gamemodel.model[i][j] === 4){
 			canM.fillStyle = "#FFFF00";
 			canM.fillRect(scale*i,scale*j, scale, scale);
+		}
+
+		if (gamemodel.model[i][j] === 98){
+
+			canM.fillStyle = "#FF0000"
+			canM.fillRect(scale*i,scale*j + scale/3, scale, 2*scale/3);
+			canM.fillRect(scale*i + scale/3, scale*j, scale/3, scale);
+			canM.fillStyle = "#A85406";
+			canM.fillRect(scale*i +scale/3,scale*j, scale/3, scale/4);
+		}
+
+		if (gamemodel.model[i][j] === 99){
+
+			canM.fillStyle = "#00FF00";
+			canM.fillRect(scale*i,scale*j + scale/3, scale, 2*scale/3);
+			canM.fillRect(scale*i + scale/3, scale*j, scale/3, scale);
+			canM.fillStyle = "#A85406";
+			canM.fillRect(scale*i +scale/3,scale*j, scale/3, scale/4);
 		}
 
 		if (gamemodel.model[i][j] === 100){
@@ -49,7 +74,7 @@ scorectx.fillRect(0,0,800,40);
 scorectx.fillStyle = "#000000"
 scorectx.font = "20px Arial";
 scorectx.fillText("Score: " + gamemodel.score,10,20);
-scorectx.fillText("Health: " + gamemodel.health, 700,20);
+scorectx.fillText("Health: " + gamemodel.health, 500,20);
 
 var scorecan = document.getElementById("message");
 var scorectx = scorecan.getContext("2d");
@@ -68,13 +93,17 @@ drawGrid();
 
 // newGame
 function newgame() {
-	gamemodel.resetZero();
-	drawGrid();
+	location.reload();
 }
 
 // help
 function about() {
-	alert("A crappy fangame made by /u/Aureo_Speedwagon aka @carpforbrains. October 4, 2017. \n Updated Oct 5, 2017. Current Version 1.1.")
+	alert("A crappy fangame made by /u/Aureo_Speedwagon aka @carpforbrains. October 4, 2017. \n Updated Oct 5, 2017. Current Version 2.0.")
+}
+
+//updates
+function updates(){
+	alert("New in Version 2.0: \n +Added Potions \n +Nerfed Froosh and Buffed Dooj (for game balance) \n +Fire now wraps around the screen \n +Moved health counter to account for increased health values \n +Increased score for monster killing \n +minor bug/text fixes \n +Added Verion Info.")
 }
 
 
@@ -123,43 +152,38 @@ function dooj() {
 	var curx = curLoc[0];
 	var cury = curLoc[1];
 
-	var burncells = [];
-
-	gamemodel.burnCell(curx, cury + 1)
-	gamemodel.burnCell(curx, cury + 2)
-	gamemodel.burnCell(curx, cury + 3)
-	gamemodel.burnCell(curx+1, cury + 2)
-	gamemodel.burnCell(curx-1, cury + 2)
-	gamemodel.burnCell(curx+1, cury + 3)
-	gamemodel.burnCell(curx-1, cury + 3)
-
 	gamemodel.burnCell(curx, cury - 1)
 	gamemodel.burnCell(curx, cury - 2)
 	gamemodel.burnCell(curx, cury - 3)
+	gamemodel.burnCell(curx+1, cury - 1)
+	gamemodel.burnCell(curx-1, cury - 1)
 	gamemodel.burnCell(curx+1, cury - 2)
 	gamemodel.burnCell(curx-1, cury - 2)
 	gamemodel.burnCell(curx+1, cury - 3)
 	gamemodel.burnCell(curx-1, cury - 3)
 
+	gamemodel.burnCell(curx, cury + 1)
+	gamemodel.burnCell(curx+1, cury + 1)
+	gamemodel.burnCell(curx-1, cury + 1)
+
 	drawGrid();
 
 	setTimeout(function(){
 
-	gamemodel.killCell(curx, cury + 1)
-	gamemodel.killCell(curx, cury + 2)
-	gamemodel.killCell(curx, cury + 3)
-	gamemodel.killCell(curx+1, cury + 2)
-	gamemodel.killCell(curx-1, cury + 2)
-	gamemodel.killCell(curx+1, cury + 3)
-	gamemodel.killCell(curx-1, cury + 3)
-
 	gamemodel.killCell(curx, cury - 1)
 	gamemodel.killCell(curx, cury - 2)
 	gamemodel.killCell(curx, cury - 3)
+	gamemodel.killCell(curx+1, cury - 1)
+	gamemodel.killCell(curx-1, cury - 1)
 	gamemodel.killCell(curx+1, cury - 2)
 	gamemodel.killCell(curx-1, cury - 2)
 	gamemodel.killCell(curx+1, cury - 3)
 	gamemodel.killCell(curx-1, cury - 3)
+
+	gamemodel.killCell(curx, cury + 1)
+	gamemodel.killCell(curx+1, cury + 1)
+	gamemodel.killCell(curx-1, cury + 1)
+
 
 	drawGrid();
 	if (Math.random() > .90){
@@ -183,17 +207,11 @@ function froosh() {
 	gamemodel.burnCell(curx+1, cury)
 	gamemodel.burnCell(curx+2, cury)
 	gamemodel.burnCell(curx+3, cury)
-	gamemodel.burnCell(curx+2, cury + 1)
-	gamemodel.burnCell(curx+2, cury - 1)
-	gamemodel.burnCell(curx+3, cury + 1)
 	gamemodel.burnCell(curx+3, cury - 1)
 
 	gamemodel.burnCell(curx-1, cury)
 	gamemodel.burnCell(curx-2, cury)
 	gamemodel.burnCell(curx-3, cury)
-	gamemodel.burnCell(curx-2, cury + 1)
-	gamemodel.burnCell(curx-2, cury - 1)
-	gamemodel.burnCell(curx-3, cury + 1)
 	gamemodel.burnCell(curx-3, cury - 1)
 
 	drawGrid();
@@ -203,17 +221,11 @@ function froosh() {
 	gamemodel.killCell(curx+1, cury)
 	gamemodel.killCell(curx+2, cury)
 	gamemodel.killCell(curx+3, cury)
-	gamemodel.killCell(curx+2, cury + 1)
-	gamemodel.killCell(curx+2, cury - 1)
-	gamemodel.killCell(curx+3, cury + 1)
 	gamemodel.killCell(curx+3, cury - 1)
 
 	gamemodel.killCell(curx-1, cury)
 	gamemodel.killCell(curx-2, cury)
 	gamemodel.killCell(curx-3, cury)
-	gamemodel.killCell(curx-2, cury + 1)
-	gamemodel.killCell(curx-2, cury - 1)
-	gamemodel.killCell(curx-3, cury + 1)
 	gamemodel.killCell(curx-3, cury - 1)
 
 	drawGrid();
@@ -230,14 +242,22 @@ function froosh() {
 function addthing(){
 	var randx = Math.floor(Math.random()*XDIM);
 	var randy = Math.floor(Math.random()*YDIM);
-	var monvalue = Math.random();
+	var monvalue = Math.ceil(Math.random()*20);
+	var itemvalue = Math.ceil(Math.random()*100);
 
 
-	if (monvalue < .2){
-		gamemodel.placeCheat(randx, randy);
+	if (monvalue === 1){
 
-	}else if(monvalue >.999){
-		gamemodel.placeSECRET(randx,randy);
+		if (itemvalue >= 50){
+		gamemodel.placePowerUp(randx, randy);
+		} else if (itemvalue ===1){
+			gamemodel.placeSECRET(randx, randy);
+		}else{
+			gamemodel.placePotion(randx, randy);
+		}
+
+	}else if(monvalue <= 7){
+		gamemodel.placeCheat(randx,randy);
 	}else{
 		gamemodel.placeMonster(randx, randy);
 	}
@@ -245,6 +265,29 @@ function addthing(){
 
 
 	drawGrid();
+
+
+
+
+}
+
+
+function determineFireColor(){
+	var multi = gamemodel.multiplier;
+	var multimod = multi % 3;
+
+
+	var FIREorange = "#FF4500";
+	var FIREgreen = "#27AE60";
+	var FIREpurple = "#9B59B6";
+
+	if (multimod == 1){
+		FIREColor = FIREorange;
+	}else if (multimod == 2){
+		FIREColor = FIREpurple;
+	}else {
+		FIREColor = FIREgreen;
+	}
 
 
 
