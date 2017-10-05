@@ -194,7 +194,7 @@ Game.prototype = {
         this.changeScore(1000000);
         this.injure(1);
       }else if (oldtype === 100){
-        alert("Found the secret SECRET COLLECT easter egg!") 
+        alert("Found the secret SECRET COLLECT easter egg! Find 12 and something good might happen.") 
 
       }
 
