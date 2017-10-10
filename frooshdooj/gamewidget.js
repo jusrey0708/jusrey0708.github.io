@@ -20,8 +20,8 @@ for (var i=0; i < XDIM; i++){
 			canM.fillStyle = "#00BEEF";
 			canM.fillRect(scale*i,scale*j, scale/2 -3, scale);
 			canM.fillRect(scale*i + (scale/2) +3, scale*j, scale/2 -3, scale);
-			canM.fillStyle = "#000000"
-			canM.fillRect(scale*i,scale*j, scale/2 -3, scale/3)
+			canM.fillStyle = "#000000";
+			canM.fillRect(scale*i,scale*j, scale/2 -3, scale/3);
 			canM.fillRect(scale*i + (scale/2) +3, scale*j, scale/2 -3, scale/3);
 
 		}
