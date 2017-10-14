@@ -124,49 +124,44 @@ function updates(){
 function up() {
 	gamemodel.PLAYER.moveUp();
 	drawGrid();
-	setTimeout(function(){
-		gamemodel.nextStep();
-		drawGrid();
-	}, 100);
+	gamemodel.nextStep();
+	drawGrid();
+	
 }
 
 // down
 function down() {
 	gamemodel.PLAYER.moveDown();
 	drawGrid();
-	setTimeout(function(){
-		gamemodel.nextStep();
-		drawGrid();
-	}, 100);
+	gamemodel.nextStep();
+	drawGrid();
+	
 }
 
 // left
 function left() {
 	gamemodel.PLAYER.moveLeft();
 	drawGrid();
-	setTimeout(function(){
-		gamemodel.nextStep();
-		drawGrid();
-	}, 100);
+	gamemodel.nextStep();
+	drawGrid();
+	
 }
 
 // right
 function right() {
 	gamemodel.PLAYER.moveRight();
 	drawGrid();
-	setTimeout(function(){
-		gamemodel.nextStep();
-		drawGrid();
-	}, 100);
+	gamemodel.nextStep();
+	drawGrid();
+	
 }
 
 // wait
 function wait() {
 	drawGrid();
-	setTimeout(function(){
-		gamemodel.nextStep();
-		drawGrid();
-	}, 100);
+	gamemodel.nextStep();
+	drawGrid();
+	
 }
 
 //sword attacks

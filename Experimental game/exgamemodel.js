@@ -153,28 +153,6 @@ Game.prototype = {
               }
             }
           }
-
-
-
-          //check interactions with player
-          if ((this.PLAYER.locx === i)&&(this.PLAYER.locy === j)){
-
-            if (thisEnt != "Empty"){
-              var dmgamt = thisEnt.StepDmg;
-              this.PLAYER.injure(dmgamt);
-            }
-
-            if (thisDmg != "Empty"){
-              var dmgamt = thisDmg.Damage;
-              this.PLAYER.injure(dmgamt);
-              this.clearDmgObjCell(i,j);
-            }
-
-
-          }
-
-
-
     
       }
     }
@@ -228,6 +206,32 @@ Game.prototype = {
           }
           }
 
+        }
+      }
+
+
+                //check interactions with player
+      for (var i = 0; i < XDIM; i++) { 
+        for (var j = 0; j < YDIM; j++) {
+
+          if ((this.PLAYER.locx === i)&&(this.PLAYER.locy === j)){
+
+            var thisEnt = newENTITY[i][j];
+            var thisDmg = newDMGOBJ[i][j];
+
+            if (thisEnt != "Empty"){
+              var dmgamt = thisEnt.StepDmg;
+              this.PLAYER.injure(dmgamt);
+            }
+
+            if (thisDmg != "Empty"){
+              var dmgamt = thisDmg.Damage;
+              this.PLAYER.injure(dmgamt);
+              this.clearDmgObjCell(i,j);
+            }
+
+
+          }
         }
       }
 
