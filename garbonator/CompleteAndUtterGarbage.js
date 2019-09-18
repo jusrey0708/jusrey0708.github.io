@@ -168,6 +168,64 @@ hb.style.display='flex';
 hb.style.flexDirection='row';
 hb.style.justifyContent='space-around';
 
+const hg=document.createElement('div');
+hg.style.flexDirection='column';
+hg.style.width='50px';
+hg.style.paddingLeft='10px';
+
+const hh=document.createElement('div');
+hh.style.flex='0 1 5%';
+hh.style.background=sb;
+hh.style.width='30%';
+hh.style.borderTopLeftRadius='5px';
+hh.style.borderTopRightRadius='5px';
+hh.style.left='50%';
+hh.style.transform='translateX(-50%)';
+hh.style.height='5px';
+hh.style.position='relative';
+hh.style.top='1px';
+
+const hl=document.createElement('div');
+hl.style.flex='0 1 10%';
+hl.style.background=sb;
+hl.style.width='100%';
+hl.style.borderTopLeftRadius='5px';
+hl.style.borderTopRightRadius='5px';
+hl.style.height='10px';
+hl.style.borderBottom='2px solid '+sc;
+
+const hc=document.createElement('div');
+hc.style.display='flex';
+hc.style.flexDirection='row';
+hc.style.justifyContent='space-around';
+hc.style.background=sb;
+hc.style.width='95%';
+hc.style.left='50%';
+hc.style.transform='translateX(-50%)';
+hc.style.flex='0 1 85%';
+hc.style.borderTopLeftRadius='5px';
+hc.style.borderTopRightRadius='5px';
+hc.style.position='relative';
+
+const hv1=document.createElement('div');
+hv1.style.height='29px';
+hv1.style.width='5%';
+hv1.style.borderRadius='5px';
+hv1.style.background=sc;
+hv1.style.marginTop='5px';
+hv1.style.marginBottom='5px';
+
+hv2=hv1.cloneNode();
+hv3=hv1.cloneNode();
+
+hc.appendChild(hv1);
+hc.appendChild(hv2);
+hc.appendChild(hv3);
+hg.appendChild(hh);
+hg.appendChild(hl);
+hg.appendChild(hc);
+hb.appendChild(hg);
+
 hr.appendChild(ht);
 hr.appendChild(hb);
 document.body.appendChild(hr);
