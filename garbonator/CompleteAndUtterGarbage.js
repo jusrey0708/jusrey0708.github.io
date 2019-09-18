@@ -122,7 +122,7 @@ o+=g+l;
 });
 return o;
 }
-function fp(s){ff+fv(s.codePointAt(0)+[])+')'}
+function fp(s){return ff+fv(s.codePointAt(0)+[])+')'}
 function fc(){document.getElementById('o').innerText=fv(document.getElementById('i').value)};
 
 const sb='black';
