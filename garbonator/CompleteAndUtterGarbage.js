@@ -125,3 +125,50 @@ return o;
 function fp(s){ff+fv(s.codePointAt(0)+[])+')'}
 function fc(){document.getElementById('o').innerText=fv(document.getElementById('i').value)};
 
+const sb='black';
+const sc='#00beef';
+const sn='none';
+const sf='Consolas';
+
+document.body.style.background=sb;
+document.body.style.fontFamily=sf;
+
+const hr=document.createElement('div');
+hr.style.display='flex';
+hr.style.flexDirection='row';
+
+const ht=document.createElement('textarea');
+ht.id='i';
+ht.style.width="calc(100vw - 320px)";
+ht.style.height='70px';
+ht.style.background=sb;
+ht.style.color=sc;
+ht.style.border='1px solid '+sc;
+ht.style.borderImage=sn;
+ht.style.resize=sn;
+
+const ho=document.createElement('p');
+ho.id='o';
+ho.style.width='100%';
+ho.style.height='80%';
+ho.style.color=sc;
+ho.fontSize='14px';
+ho.fontFamily=sf;
+
+const hb=document.createElement('button');
+hb.onclick = fc;
+hb.style.background=sc;
+hb.style.border=sn;
+hb.style.fontFamily='fantasy';
+hb.style.fontSize='45px';
+hb.style.width='320px';
+hb.style.cursor='pointer';
+hb.innerText='GARBONATE';
+hb.style.display='flex';
+hb.style.flexDirection='row';
+hb.style.justifyContent='space-around';
+
+hr.appendChild(ht);
+hr.appendChild(hb);
+document.body.appendChild(hr);
+document.body.appendChild(ho);
