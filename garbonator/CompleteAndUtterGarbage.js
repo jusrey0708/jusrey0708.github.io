@@ -1,4 +1,3 @@
-
 const ct='({}+[])[!+[]+!+[]+!+[]+!+[]+!+[]]+({}+[])[+!+[]]+(!+[]/![]+[])[+!+[]]+(![]+[])[+!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+(([][+[]])+[])[+[]]+({}+[])[!+[]+!+[]+!+[]+!+[]+!+[]]+(!![]+[])[+[]]+({}+[])[+!+[]]+(!![]+[])[+!+[]]';
 const it='(!+[]/![]+[])[!+[]+!+[]+!+[]]+(!+[]/![]+[])[+!+[]]+(([][+[]])+[])[+!+[]+!+[]]+(!![]+[])[+!+[]+!+[]+!+[]]+((/[]/)[({}+[])[!+[]+!+[]+!+[]+!+[]+!+[]]+({}+[])[+!+[]]+(!+[]/![]+[])[+!+[]]+(![]+[])[+!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+(([][+[]])+[])[+[]]+({}+[])[!+[]+!+[]+!+[]+!+[]+!+[]]+(!![]+[])[+[]]+({}+[])[+!+[]]+(!![]+[])[+!+[]]]+[])[((!+[]+!+[]+!+[])<<(!+[]+!+[]))+!+[]]+({}+[])[((!+[])<<(!+[]+!+[]+!+[]))]+(![]+[])[+[]]';
 const st='(![]+[])[+!+[]+!+[]+!+[]]+(([][+[]])+[])[+[]]+({}+[])[!+[]+!+[]]';
@@ -13,7 +12,7 @@ const bf='([]+[])['+st+']['+ct+']('+rt+'+'+bt+')()';
 const en='(!![]+[])[+!+[]+!+[]+!+[]]+(!+[]/![]+[])[+!+[]]+((/[]/)['+ct+']+[])[((!+[]+!+[]+!+[])<<(!+[]+!+[]))]+(!+[]/![]+[])[!+[]+!+[]+!+[]]'
 const dt='(([][+[]])+[])[+!+[]+!+[]]+({}+[])[+!+[]]+({}+[])[!+[]+!+[]+!+[]+!+[]+!+[]]+(([][+[]])+[])[+[]]+(((!+[])/(+[]))[({}+[])[!+[]+!+[]+!+[]+!+[]+!+[]]+({}+[])[+!+[]]+(!+[]/![]+[])[+!+[]]+(![]+[])[+!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+(([][+[]])+[])[+[]]+({}+[])[!+[]+!+[]+!+[]+!+[]+!+[]]+(!![]+[])[+[]]+({}+[])[+!+[]]+(!![]+[])[+!+[]]]+[])[((!+[])<<(!+[]+!+[]+!+[]))+!+[]+!+[]+!+[]]+(!![]+[])[+!+[]+!+[]+!+[]]+(!+[]/![]+[])[+!+[]]+(!![]+[])[+[]]';
 const df='([]+[])['+st+']['+ct+']('+rt+'+'+dt+')()';
-const ft='(![]+[])[+[]]+(!![]+[])[+!+[]]+({}+[])[+!+[]]+(((!+[])/(+[]))['+ct+']+[])[((!+[])<<(!+[]+!+[]+!+[]))+!+[]+!+[]+!+[]]+' + bf + '((/</+[])[+!+[]]+(/!/+[])[+!+[]])[+!+[]]+({}+[])[+!+[]]+(([][+[]])+[])[+!+[]+!+[]]+(!![]+[])[+!+[]+!+[]+!+[]]+' + bf + '((/</+[])[+!+[]]+(/!/+[])[+!+[]])[+[]]+({}+[])[+!+[]]+(!+[]/![]+[])[!+[]+!+[]+!+[]]+(!+[]/![]+[])[+!+[]]+(!![]+[])[+[]]';
+const ft='(![]+[])[+[]]+(!![]+[])[+!+[]]+({}+[])[+!+[]]+(((!+[])/(+[]))['+ct+']+[])[((!+[])<<(!+[]+!+[]+!+[]))+!+[]+!+[]+!+[]]+'+bf+'((/</+[])[+!+[]]+(/!/+[])[+!+[]])[+!+[]]+({}+[])[+!+[]]+(([][+[]])+[])[+!+[]+!+[]]+(!![]+[])[+!+[]+!+[]+!+[]]+'+bf+'((/</+[])[+!+[]]+(/!/+[])[+!+[]])[+[]]+({}+[])[+!+[]]+(!+[]/![]+[])[!+[]+!+[]+!+[]]+(!+[]/![]+[])[+!+[]]+(!![]+[])[+[]]';
 const ff='([]+[])['+ct+']['+ft+']('
 const m= new Map();
 m.set('A','([]['+ct+']+[])[((!+[])<<(!+[]+!+[]+!+[]))+!+[]]');
@@ -107,8 +106,8 @@ m.set('`',af+'((!+[]/![]+[])[+[]]+(+!+[]+[])+(((!+[])<<(!+[]+!+[]+!+[]))+!+[]+[]
 m.set(';',af+'(({}+[])[((!+[])<<(!+[]+!+[]+!+[]))]+(+!+[]+[])+(!+[]+!+[]+!+[]+!+[]+[])+(![]+[])[!+[]+!+[]])[+[]]');
 m.set('^',af+'(({}+[])[((!+[])<<(!+[]+!+[]+!+[]))]+(+!+[]+[])+(!+[]+!+[]+!+[]+!+[]+[])+(![]+[])[!+[]+!+[]])[+!+[]]');
 m.set('%',af+'(({}+[])[((!+[])<<(!+[]+!+[]+!+[]))]+(+!+[]+[])+(!+[]+!+[]+!+[]+!+[]+[])+(![]+[])[!+[]+!+[]])[!+[]+!+[]]');
-m.set("@",af+'((!![]+[])[+!+[]+!+[]+!+[]]+(+[]+[])+([]['+ct+']+[])[((!+[])<<(!+[]+!+[]+!+[]))+!+[]]+(((!+[])/(+[]))[' +ct+ ']+[])[((!+[])<<(!+[]+!+[]+!+[]))+!+[]+!+[]+!+[]])[+!+[]]');
-m.set("&",af+'((!![]+[])[+!+[]+!+[]+!+[]]+(+[]+[])+([]['+ct+']+[])[((!+[])<<(!+[]+!+[]+!+[]))+!+[]]+(((!+[])/(+[]))[' +ct+ ']+[])[((!+[])<<(!+[]+!+[]+!+[]))+!+[]+!+[]+!+[]])[!+[]+!+[]]');
+m.set("@",af+'((!![]+[])[+!+[]+!+[]+!+[]]+(+[]+[])+([]['+ct+']+[])[((!+[])<<(!+[]+!+[]+!+[]))+!+[]]+(((!+[])/(+[]))['+ct+']+[])[((!+[])<<(!+[]+!+[]+!+[]))+!+[]+!+[]+!+[]])[+!+[]]');
+m.set("&",af+'((!![]+[])[+!+[]+!+[]+!+[]]+(+[]+[])+([]['+ct+']+[])[((!+[])<<(!+[]+!+[]+!+[]))+!+[]]+(((!+[])/(+[]))['+ct+']+[])[((!+[])<<(!+[]+!+[]+!+[]))+!+[]+!+[]+!+[]])[!+[]+!+[]]');
 m.set(">",af+'(({}+[])[((!+[])<<(!+[]+!+[]+!+[]))]+({}+[])[!+[]+!+[]+!+[]]+(!+[]+!+[]+!+[]+!+[]+!+[]+[])+(((!+[])<<(!+[]+!+[]+!+[]))+[]))[+!+[]]');
 m.set("|",af+'(({}+[])[((!+[])<<(!+[]+!+[]+!+[]))]+({}+[])[!+[]+!+[]+!+[]]+(!+[]+!+[]+!+[]+!+[]+!+[]+[])+(((!+[])<<(!+[]+!+[]+!+[]))+[]))[!+[]+!+[]]');
 m.set("\\",af+'((![]+[])[+!+[]]+(![]+[])[!+[]+!+[]]+((/[]/)['+ct+']+[])[((!+[]+!+[]+!+[])<<(!+[]+!+[]))+!+[]]+(![]+[])[!+[]+!+[]])[+!+[]]');
@@ -125,95 +124,98 @@ return o;
 function fp(s){return ff+fv(s.codePointAt(0)+[])+')'}
 function fc(){document.getElementById('o').innerText=fv(document.getElementById('i').value)};
 
+const s='style';
 const sb='black';
 const sc='#00beef';
 const sn='none';
 const sf='Consolas';
+const st='translateX(-50%)';
+const sv='5px';
 
-document.body.style.background=sb;
-document.body.style.fontFamily=sf;
+document.body[s].background=sb;
+document.body[s].fontFamily=sf;
 
 const hr=document.createElement('div');
-hr.style.display='flex';
-hr.style.flexDirection='row';
+hr[s].display='flex';
+hr[s].flexDirection='row';
 
 const ht=document.createElement('textarea');
 ht.id='i';
-ht.style.width="calc(100vw - 320px)";
-ht.style.height='70px';
-ht.style.background=sb;
-ht.style.color=sc;
-ht.style.border='1px solid '+sc;
-ht.style.borderImage=sn;
-ht.style.resize=sn;
+ht[s].width="calc(100vw - 320px)";
+ht[s].height='70px';
+ht[s].background=sb;
+ht[s].color=sc;
+ht[s].border='1px solid '+sc;
+ht[s].borderImage=sn;
+ht[s].resize=sn;
 
 const ho=document.createElement('p');
 ho.id='o';
-ho.style.width='100%';
-ho.style.height='80%';
-ho.style.color=sc;
-ho.fontSize='14px';
-ho.fontFamily=sf;
+ho[s].width='100%';
+ho[s].height='80%';
+ho[s].color=sc;
+ho[s].fontSize='14px';
+ho[s].fontFamily=sf;
 
 const hb=document.createElement('button');
 hb.onclick = fc;
-hb.style.background=sc;
-hb.style.border=sn;
-hb.style.fontFamily='fantasy';
-hb.style.fontSize='45px';
-hb.style.width='320px';
-hb.style.cursor='pointer';
+hb[s].background=sc;
+hb[s].border=sn;
+hb[s].fontFamily='fantasy';
+hb[s].fontSize='45px';
+hb[s].width='320px';
+hb[s].cursor='pointer';
 hb.innerText='GARBONATE';
-hb.style.display='flex';
-hb.style.flexDirection='row';
-hb.style.justifyContent='space-around';
+hb[s].display='flex';
+hb[s].flexDirection='row';
+hb[s].justifyContent='space-around';
 
 const hg=document.createElement('div');
-hg.style.flexDirection='column';
-hg.style.width='50px';
-hg.style.paddingLeft='10px';
+hg[s].flexDirection='column';
+hg[s].width='50px';
+hg[s].paddingLeft='10px';
 
 const hh=document.createElement('div');
-hh.style.flex='0 1 5%';
-hh.style.background=sb;
-hh.style.width='30%';
-hh.style.borderTopLeftRadius='5px';
-hh.style.borderTopRightRadius='5px';
-hh.style.left='50%';
-hh.style.transform='translateX(-50%)';
-hh.style.height='5px';
-hh.style.position='relative';
-hh.style.top='1px';
+hh[s].flex='0 1 5%';
+hh[s].background=sb;
+hh[s].width='30%';
+hh[s].borderTopLeftRadius=sv;
+hh[s].borderTopRightRadius=sv;
+hh[s].left='50%';
+hh[s].transform=st;
+hh[s].height=sv;
+hh[s].position='relative';
+hh[s].top='1px';
 
 const hl=document.createElement('div');
-hl.style.flex='0 1 10%';
-hl.style.background=sb;
-hl.style.width='100%';
-hl.style.borderTopLeftRadius='5px';
-hl.style.borderTopRightRadius='5px';
-hl.style.height='10px';
-hl.style.borderBottom='2px solid '+sc;
+hl[s].flex='0 1 10%';
+hl[s].background=sb;
+hl[s].width='100%';
+hl[s].borderTopLeftRadius=sv;
+hl[s].borderTopRightRadius=sv;
+hl[s].height='10px';
+hl[s].borderBottom='2px solid '+sc;
 
 const hc=document.createElement('div');
-hc.style.display='flex';
-hc.style.flexDirection='row';
-hc.style.justifyContent='space-around';
-hc.style.background=sb;
-hc.style.width='95%';
-hc.style.left='50%';
-hc.style.transform='translateX(-50%)';
-hc.style.flex='0 1 85%';
-hc.style.borderTopLeftRadius='5px';
-hc.style.borderTopRightRadius='5px';
-hc.style.position='relative';
+hc[s].display='flex';
+hc[s].flexDirection='row';
+hc[s].justifyContent='space-around';
+hc[s].background=sb;
+hc[s].width='95%';
+hc[s].left='50%';
+hc[s].transform=st;
+hc[s].flex='0 1 85%';
+hc[s].borderBottomLeftRadius=sv;
+hc[s].borderBottomRightRadius=sv;
+hc[s].position='relative';
 
 const hv1=document.createElement('div');
-hv1.style.height='29px';
-hv1.style.width='5%';
-hv1.style.borderRadius='5px';
-hv1.style.background=sc;
-hv1.style.marginTop='5px';
-hv1.style.marginBottom='5px';
+hv1[s].height='29px';
+hv1[s].width='5%';
+hv1[s].borderRadius=sv;
+hv1[s].background=sc;
+hv1[s].marginTop=sv;
+hv1[s].marginBottom=sv;
 
 hv2=hv1.cloneNode();
 hv3=hv1.cloneNode();
