@@ -44,6 +44,18 @@ const _closeCurly = `(${findFunctionString}[${Val(32)}])`;
 const _openSquare = `(${findFunctionString}[${Val(18)}])`;
 const _closeSquare = `(${findFunctionString}[${Val(30)}])`;
 
+
+// "fontcolor"
+const fontcolorString = [f,o,n,t,c,o,l,o,r].join('+');
+// "<font color="undefined"></font>"
+const fontcolorStringString = `(${emptyString}[${fontcolorString}]())`;
+const _doubleQuote = `(${fontcolorStringString}[${Val(12)}])`;
+const _equals = `(${fontcolorStringString}[${Val(11)}])`;
+const _lessthan = `(${fontcolorStringString}[${Val(0)}])`;
+const _greaterthan = `(${fontcolorStringString}[${Val(23)}])`;
+const _forwardSlash = `(${fontcolorStringString}[${Val(25)}])`;
+
+
 const constructorString = [c, o, n, s, t, r, u, c, t, o, r].join('+');
 
 // "function String() { [native code] }"
@@ -67,12 +79,6 @@ const booleanConstructorString = `((![])[${constructorString}]+[])`;
 const B = `(${booleanConstructorString}[${Val(9)}])`;
 
 
-const subString = [s, u, b].join('+');
-// "<sub></sub>"
-const stringSubString = `(([]+[])[${subString}]())`;
-const _lessthan = `(${stringSubString}[${Val(0)}])`;
-const _greaterthan = `(${stringSubString}[${Val(4)}])`;
-const _forwardSlash = `(${stringSubString}[${Val(6)}])`;
 
 // "function Function() { [native code] }"
 const functionConstructorString = `([][${findString}][${constructorString}]+[])`;
@@ -83,7 +89,7 @@ const F = `(${functionConstructorString}[${Val(9)}])`;
 //
 //     }`
 const anonymousFunctionString
-    = `(([]+[])[${subString}][${constructorString}]()+[])`;
+    = `(([])[${findString}][${constructorString}]()+[])`;
 const _newLine = `(${anonymousFunctionString}[${Val(19)}])`;
 
 
@@ -104,7 +110,7 @@ const O = `(${objectObjectString}[${Val(8)}])`;
 const returnString = [r, e, t, u, r, n].join('+');
 
 const functionMaker = (func) =>
-    `([]+[])[${subString}][${constructorString}](${func})()`;
+    `([])[${findString}][${constructorString}](${func})()`;
 
 // "/f/"
 const regExpObjectString = [_forwardSlash, f, _forwardSlash].join('+');
@@ -142,13 +148,12 @@ const enEiString = [e, n, E, i].join('+');
 const zqDoubleQuoteString = `${atobFunction}(${enEiString})`;
 const z = `(${zqDoubleQuoteString}[${Val(0)}])`;
 const q = `(${zqDoubleQuoteString}[${Val(1)}])`;
-const _doubleQuote = `(${zqDoubleQuoteString}[${Val(2)}])`;
 
 // "YQ=="
 const YQequalsString = `${btoaFunction}(${a})`;
 const Y = `(${YQequalsString}[${Val(0)}])`;
 const Q = `(${YQequalsString}[${Val(1)}])`;
-const _equals = `(${YQequalsString}[${Val(2)}])`;
+
 
 const ddIString = [d, d, I].join('+');
 const ZGRJString = `${btoaFunction}(${ddIString})`;
