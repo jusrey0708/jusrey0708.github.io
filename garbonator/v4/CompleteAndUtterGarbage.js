@@ -316,10 +316,19 @@ function convertCode(text) {
     return functionMaker(convertText(`${text}`))
 }
 
-function garbonate() { document.getElementById('o').innerText = convertText(document.getElementById('i').value) };
+// diagonstics
 
+const sizeMap = [];
+garboMap.forEach((v,k)=> sizeMap.push([k,v.length]));
+sizeMap.push(['@', codePoint('@').length]);
+console.log(sizeMap);
+
+// ==================================================================================================
 
 // HTML/CSS
+
+function garbonate() { document.getElementById('o').innerText = convertText(document.getElementById('i').value) };
+
 document.body.style.background = 'black';
 document.body.style.fontFamily ='Consolas';
 
