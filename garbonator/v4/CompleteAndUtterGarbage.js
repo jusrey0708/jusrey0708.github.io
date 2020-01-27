@@ -2,11 +2,11 @@ function Val(n) {
     if (n === 0) {
         return '(+[])';
     }
-    // if (n < 10) {
-    return '(' + '+!+[]'.repeat(n) + ')';
-    // }
+    if (n < 10) {
+        return '(' + '+!+[]'.repeat(n) + ')';
+    }
 
-    // return '('+ [...n.toString()].map(x=>`(${Val(x)}+[])`).join('+') + ')';
+    return '(' + [...n.toString()].map(x => `(${Val(x)}+[])`).join('+') + ')';
 
 }
 
@@ -316,13 +316,11 @@ function convertCode(text) {
     return functionMaker(convertText(`${text}`))
 }
 
-// diagonstics
-
+// diagonstics ======================================================================================
 const sizeMap = [];
-garboMap.forEach((v,k)=> sizeMap.push([k,v.length]));
+garboMap.forEach((v, k) => sizeMap.push([k, v.length]));
 sizeMap.push(['@', codePoint('@').length]);
 console.log(sizeMap);
-
 // ==================================================================================================
 
 // HTML/CSS
@@ -330,7 +328,7 @@ console.log(sizeMap);
 function garbonate() { document.getElementById('o').innerText = convertText(document.getElementById('i').value) };
 
 document.body.style.background = 'black';
-document.body.style.fontFamily ='Consolas';
+document.body.style.fontFamily = 'Consolas';
 
 const hr = document.createElement('div');
 hr.style.display = 'flex';
@@ -352,7 +350,7 @@ ho.style.width = '100%';
 ho.style.height = '80%';
 ho.style.color = '#00beef';
 ho.style.fontSize = '14px';
-ho.style.fontFamily ='Consolas';
+ho.style.fontFamily = 'Consolas';
 
 const hb = document.createElement('button');
 hb.onclick = garbonate;
@@ -376,11 +374,11 @@ const hh = document.createElement('div');
 hh.style.flex = '0 1 5%';
 hh.style.background = 'black';
 hh.style.width = '30%';
-hh.style.borderTopLeftRadius ='5px';
-hh.style.borderTopRightRadius ='5px';
+hh.style.borderTopLeftRadius = '5px';
+hh.style.borderTopRightRadius = '5px';
 hh.style.left = '50%';
-hh.style.transform ='translateX(-50%)';
-hh.style.height ='5px';
+hh.style.transform = 'translateX(-50%)';
+hh.style.height = '5px';
 hh.style.position = 'relative';
 hh.style.top = '1px';
 
@@ -388,8 +386,8 @@ const hl = document.createElement('div');
 hl.style.flex = '0 1 10%';
 hl.style.background = 'black';
 hl.style.width = '100%';
-hl.style.borderTopLeftRadius ='5px';
-hl.style.borderTopRightRadius ='5px';
+hl.style.borderTopLeftRadius = '5px';
+hl.style.borderTopRightRadius = '5px';
 hl.style.height = '10px';
 hl.style.borderBottom = '2px solid ' + '#00beef';
 
@@ -400,19 +398,19 @@ hc.style.justifyContent = 'space-around';
 hc.style.background = 'black';
 hc.style.width = '95%';
 hc.style.left = '50%';
-hc.style.transform ='translateX(-50%)';
+hc.style.transform = 'translateX(-50%)';
 hc.style.flex = '0 1 85%';
-hc.style.borderBottomLeftRadius ='5px';
-hc.style.borderBottomRightRadius ='5px';
+hc.style.borderBottomLeftRadius = '5px';
+hc.style.borderBottomRightRadius = '5px';
 hc.style.position = 'relative';
 
 const hv1 = document.createElement('div');
 hv1.style.height = '29px';
 hv1.style.width = '5%';
-hv1.style.borderRadius ='5px';
+hv1.style.borderRadius = '5px';
 hv1.style.background = '#00beef';
-hv1.style.marginTop ='5px';
-hv1.style.marginBottom ='5px';
+hv1.style.marginTop = '5px';
+hv1.style.marginBottom = '5px';
 
 hv2 = hv1.cloneNode();
 hv3 = hv1.cloneNode();
