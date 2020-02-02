@@ -1,5 +1,5 @@
 function Val(n) {
-    if (n === 0) {
+    if (n === 0 || n === '0') {
         return '(+[])';
     }
     if (n < 10) {
@@ -46,7 +46,7 @@ const _closeSquare = `(${findFunctionString}[${Val(30)}])`;
 
 
 // "fontcolor"
-const fontcolorString = [f,o,n,t,c,o,l,o,r].join('+');
+const fontcolorString = [f, o, n, t, c, o, l, o, r].join('+');
 // "<font color="undefined"></font>"
 const fontcolorStringString = `(${emptyString}[${fontcolorString}]())`;
 const _doubleQuote = `(${fontcolorStringString}[${Val(12)}])`;
@@ -326,6 +326,12 @@ const sizeMap = [];
 garboMap.forEach((v, k) => sizeMap.push([k, v.length]));
 sizeMap.push(['@', codePoint('@').length]);
 console.log(sizeMap);
+
+const testString1 = 'abcdefghijklmnopqrstuvwxyz';
+const testString2 = 'abcdefghijklmnopqrstuvwxyz'.toUpperCase();
+const testString3 = '1234567890';
+
+
 // ==================================================================================================
 
 // HTML/CSS
