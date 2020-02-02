@@ -295,10 +295,8 @@ garboMap.set(`
 
 const fromCodePointFunction =
     [
-        f, _equals, _greaterthan,
         S, t, r, i, n, g, _period,
         f, r, o, m, C, o, d, e, P, o, i, n, t,
-        _openParen, f, _closeParen
     ].join('+');
 
 const returnFromCodePointFunction = `(${returnString}+${_space}+${fromCodePointFunction})`
