@@ -28,21 +28,21 @@ const s = `(${falseString}[${Val(3)}])`;
 const t = `(${trueString}[${Val(0)}])`;
 const u = `(${undefinedString}[${Val(0)}])`;
 
-const findString = [f, i, n, d].join('+');
+const flatString = [f, l, a, t].join('+');
 
-// "function find() { [native code] }"
-const findFunctionString = `([][${findString}]+[])`
-const c = `(${findFunctionString}[${Val(3)}])`;
-const o = `(${findFunctionString}[${Val(6)}])`;
-const v = `(${findFunctionString}[${Val(23)}])`;
+// "function flat() { [native code] }"
+const flatFunctionString = `([][${flatString}]+[])`
+const c = `(${flatFunctionString}[${Val(3)}])`;
+const o = `(${flatFunctionString}[${Val(6)}])`;
+const v = `(${flatFunctionString}[${Val(23)}])`;
 
-const _space = `(${findFunctionString}[${Val(8)}])`;
-const _openParen = `(${findFunctionString}[${Val(13)}])`;
-const _closeParen = `(${findFunctionString}[${Val(14)}])`;
-const _openCurly = `(${findFunctionString}[${Val(16)}])`;
-const _closeCurly = `(${findFunctionString}[${Val(32)}])`;
-const _openSquare = `(${findFunctionString}[${Val(18)}])`;
-const _closeSquare = `(${findFunctionString}[${Val(30)}])`;
+const _space = `(${flatFunctionString}[${Val(8)}])`;
+const _openParen = `(${flatFunctionString}[${Val(13)}])`;
+const _closeParen = `(${flatFunctionString}[${Val(14)}])`;
+const _openCurly = `(${flatFunctionString}[${Val(16)}])`;
+const _closeCurly = `(${flatFunctionString}[${Val(32)}])`;
+const _openSquare = `(${flatFunctionString}[${Val(18)}])`;
+const _closeSquare = `(${flatFunctionString}[${Val(30)}])`;
 
 
 // "fontcolor"
@@ -81,7 +81,7 @@ const B = `(${booleanConstructorString}[${Val(9)}])`;
 
 
 // "function Function() { [native code] }"
-const functionConstructorString = `([][${findString}][${constructorString}]+[])`;
+const functionConstructorString = `([][${flatString}][${constructorString}]+[])`;
 const F = `(${functionConstructorString}[${Val(9)}])`;
 
 // `function anonymous(
@@ -89,7 +89,7 @@ const F = `(${functionConstructorString}[${Val(9)}])`;
 //
 //     }`
 const anonymousFunctionString
-    = `(([])[${findString}][${constructorString}]()+[])`;
+    = `(([])[${flatString}][${constructorString}]()+[])`;
 const _newLine = `(${anonymousFunctionString}[${Val(19)}])`;
 
 
@@ -110,7 +110,7 @@ const O = `(${objectObjectString}[${Val(8)}])`;
 const returnString = [r, e, t, u, r, n].join('+');
 
 const functionMaker = (func) =>
-    `([])[${findString}][${constructorString}](${func})()`;
+    `([])[${flatString}][${constructorString}](${func})()`;
 
 // "/f/"
 const regExpObjectString = [_forwardSlash, f, _forwardSlash].join('+');
