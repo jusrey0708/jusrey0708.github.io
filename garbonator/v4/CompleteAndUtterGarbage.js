@@ -142,7 +142,7 @@ const w = `(${wkhString}[${Val(0)}])`;
 const k = `(${wkhString}[${Val(1)}])`;
 const h = `(${wkhString}[${Val(2)}])`;
 
-// "d2to"
+// "enEi"
 const enEiString = [e, n, E, i].join('+');
 // 'zq"'
 const zqDoubleQuoteString = `${atobFunction}(${enEiString})`;
@@ -295,12 +295,13 @@ garboMap.set(`
 
 const fromCodePointFunction =
     [
-        S, t, r, i, n, g, _period,
+        S, t, r, i, n, g,
+        _openSquare, _doubleQuote,
         f, r, o, m, C, o, d, e, P, o, i, n, t,
+        _doubleQuote, _closeSquare
     ].join('+');
 
-const returnFromCodePointFunction = `(${returnString}+${_space}+${fromCodePointFunction})`
-
+const returnFromCodePointFunction = `(${returnString}+${_space}+${fromCodePointFunction})`;
 
 function convertText(val) {
     return [...val]
