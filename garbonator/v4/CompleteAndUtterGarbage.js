@@ -321,11 +321,30 @@ function convertCode(text) {
 }
 
 function convertImage(dataUrl) {
+
+    // const imageFunction = `
+    // const f = window.open();
+    // f.document.body.innerHTML = '<img src="${dataUrl}" width="100px" height="100px">';
+    // `;
+
+
     const imageFunction =
         `
-    const f = window.open();
-    f.document.body.innerHTML = '<img src="${dataUrl}" width="100px" height="100px">';
-    `
+        img = function(url) {
+            var im = new Image();
+            im.onload = function() {
+              var s = [
+                'padding: ' + this.height + 'px ' + this.width + 'px;',
+                'background: url('+ url +') no-repeat;',
+                'background-size: contain;'
+               ].join(' ');
+               console.log('%c ', s);
+            };
+            im.src = url;
+          };
+
+        img("${dataUrl}");
+    `;
     return functionMaker(convertText(`${imageFunction}`));
 }
 
