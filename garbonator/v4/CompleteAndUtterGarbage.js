@@ -320,6 +320,16 @@ function convertCode(text) {
     return functionMaker(convertText(`${text}`))
 }
 
+function convertImage(dataUrl) {
+    const imageFunction =
+        `
+    const f = window.open();
+    f.document.body.innerHTML = '<img src="${dataUrl}" width="100px" height="100px">';
+    `
+    return functionMaker(convertText(`${imageFunction}`));
+}
+
+
 // diagonstics ======================================================================================
 const sizeMap = [];
 garboMap.forEach((v, k) => sizeMap.push([k, v.length]));
@@ -335,16 +345,19 @@ const testString3 = '1234567890';
 
 // HTML/CSS
 
-function garbonate() { 
+async function garbonate() {
     const inp = document.getElementById('i');
     const out = document.getElementById('o');
     const modes = document.getElementsByName('mode');
     mode = Array.from(modes).find(t => t.checked).value;
 
-    if (mode === 'code'){
-        out.innerText = convertCode(inp.value) 
+    if (mode === 'code') {
+        out.innerText = convertCode(inp.value)
+    } else if (mode === 'image') {
+        const dataUrl = await getDataUrl();
+        out.innerText = convertImage(dataUrl);
     } else {
-        out.innerText = convertText(inp.value) 
+        out.innerText = convertText(inp.value)
     }
 };
 
@@ -356,11 +369,11 @@ hr.style.display = 'flex';
 hr.style.flexDirection = 'row';
 
 const hm = document.createElement('div');
-hm.style.width = '55px';
+hm.style.width = '100px';
 
 const ht = document.createElement('textarea');
 ht.id = 'i';
-ht.style.width = "calc(100vw - 375px)";
+ht.style.width = "calc(100vw - 420px)";
 ht.style.height = '70px';
 ht.style.background = 'black';
 ht.style.color = '#00beef';
@@ -378,6 +391,24 @@ ho.style.fontFamily = 'Consolas';
 
 
 
+const hf = document.createElement('input');
+hf.type = 'file';
+hf.accept = 'image/bmp'
+
+async function readFileAsDataURL(file) {
+    let result_base64 = await new Promise((resolve) => {
+        let fileReader = new FileReader();
+        fileReader.onload = (e) => resolve(fileReader.result);
+        fileReader.readAsDataURL(file);
+    });
+    return result_base64;
+}
+
+async function getDataUrl() {
+    const fileThing = hf.files.item(0);
+    return await readFileAsDataURL(fileThing);
+}
+
 const hm1 = document.createElement('input');
 hm1.type = 'radio';
 hm1.name = 'mode'
@@ -387,7 +418,7 @@ hm1.checked = true;
 const hm1l = document.createElement('label');
 hm1l.for = 'text';
 hm1l.innerHTML = 'Text';
-hm1l.style.color = '#00beef',
+hm1l.style.color = '#00beef';
 hm1l.style.fontSize = '12px';
 
 const hm2 = document.createElement('input');
@@ -398,8 +429,19 @@ hm2.value = 'code';
 const hm2l = document.createElement('label');
 hm2l.for = 'code';
 hm2l.innerHTML = 'Code';
-hm2l.style.color = '#00beef',
+hm2l.style.color = '#00beef';
 hm2l.style.fontSize = '12px';
+
+const hm3 = document.createElement('input');
+hm3.type = 'radio';
+hm3.name = 'mode';
+hm3.value = 'image';
+
+const hm3l = document.createElement('label');
+hm3l.for = 'image';
+hm3l.innerHTML = 'Image (Exp)';
+hm3l.style.color = '#00beef';
+hm3l.style.fontSize = '12px';
 
 const hmb = document.createElement('br');
 
@@ -408,6 +450,10 @@ hm.appendChild(hm1l);
 hm.appendChild(hmb);
 hm.appendChild(hm2);
 hm.appendChild(hm2l);
+hm.appendChild(hmb);
+hm.appendChild(hm3);
+hm.appendChild(hm3l);
+hm.appendChild(hf);
 
 
 const hb = document.createElement('button');
