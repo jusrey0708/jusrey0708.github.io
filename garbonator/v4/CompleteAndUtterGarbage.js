@@ -335,7 +335,18 @@ const testString3 = '1234567890';
 
 // HTML/CSS
 
-function garbonate() { document.getElementById('o').innerText = convertText(document.getElementById('i').value) };
+function garbonate() { 
+    const inp = document.getElementById('i');
+    const out = document.getElementById('o');
+    const modes = document.getElementsByName('mode');
+    mode = Array.from(modes).find(t => t.checked).value;
+
+    if (mode === 'code'){
+        out.innerText = convertCode(inp.value) 
+    } else {
+        out.innerText = convertText(inp.value) 
+    }
+};
 
 document.body.style.background = 'black';
 document.body.style.fontFamily = 'Consolas';
@@ -344,9 +355,12 @@ const hr = document.createElement('div');
 hr.style.display = 'flex';
 hr.style.flexDirection = 'row';
 
+const hm = document.createElement('div');
+hm.style.width = '55px';
+
 const ht = document.createElement('textarea');
 ht.id = 'i';
-ht.style.width = "calc(100vw - 320px)";
+ht.style.width = "calc(100vw - 375px)";
 ht.style.height = '70px';
 ht.style.background = 'black';
 ht.style.color = '#00beef';
@@ -361,6 +375,40 @@ ho.style.height = '80%';
 ho.style.color = '#00beef';
 ho.style.fontSize = '14px';
 ho.style.fontFamily = 'Consolas';
+
+
+
+const hm1 = document.createElement('input');
+hm1.type = 'radio';
+hm1.name = 'mode'
+hm1.value = 'text';
+hm1.checked = true;
+
+const hm1l = document.createElement('label');
+hm1l.for = 'text';
+hm1l.innerHTML = 'Text';
+hm1l.style.color = '#00beef',
+hm1l.style.fontSize = '12px';
+
+const hm2 = document.createElement('input');
+hm2.type = 'radio';
+hm2.name = 'mode';
+hm2.value = 'code';
+
+const hm2l = document.createElement('label');
+hm2l.for = 'code';
+hm2l.innerHTML = 'Code';
+hm2l.style.color = '#00beef',
+hm2l.style.fontSize = '12px';
+
+const hmb = document.createElement('br');
+
+hm.appendChild(hm1);
+hm.appendChild(hm1l);
+hm.appendChild(hmb);
+hm.appendChild(hm2);
+hm.appendChild(hm2l);
+
 
 const hb = document.createElement('button');
 hb.onclick = garbonate;
@@ -433,6 +481,7 @@ hg.appendChild(hl);
 hg.appendChild(hc);
 hb.appendChild(hg);
 
+hr.appendChild(hm);
 hr.appendChild(ht);
 hr.appendChild(hb);
 document.body.appendChild(hr);
