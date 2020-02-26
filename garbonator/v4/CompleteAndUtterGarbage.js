@@ -10,6 +10,17 @@ function val(n) {
 
 }
 
+const _1= `(${val(1)}+[])`
+const _2= `(${val(2)}+[])`
+const _3= `(${val(3)}+[])`
+const _4= `(${val(4)}+[])`
+const _5= `(${val(5)}+[])`
+const _6= `(${val(6)}+[])`
+const _7= `(${val(7)}+[])`
+const _8= `(${val(8)}+[])`
+const _9= `(${val(9)}+[])`
+const _0= `(${val(0)}+[])`
+
 
 const trueString = '(!![]+[])';
 const falseString = '(![]+[])';
@@ -121,7 +132,7 @@ const regExpObject = `(${functionMaker(returnRegExpString)})`;
 // "function RegExp() { [native code] }"
 const regExpConstructorString = `(${regExpObject}[${constructorString}]+[])`;
 const p = `(${regExpConstructorString}[${val(14)}])`;
-const x = `(${regExpConstructorString}[${val(13)}])`;
+// const x = `(${regExpConstructorString}[${val(13)}])`;
 const E = `(${regExpConstructorString}[${val(12)}])`;
 
 const atobString = [a, t, o, b].join('+');
@@ -142,12 +153,13 @@ const w = `(${wkhString}[${val(0)}])`;
 const k = `(${wkhString}[${val(1)}])`;
 const h = `(${wkhString}[${val(2)}])`;
 
-// "enEi"
-const enEiString = [e, n, E, i].join('+');
-// 'zq"'
-const zqDoubleQuoteString = `${atobFunction}(${enEiString})`;
-const z = `(${zqDoubleQuoteString}[${val(0)}])`;
-const q = `(${zqDoubleQuoteString}[${val(1)}])`;
+// "enF4"
+const enF4String = [e, n, F, _4].join('+');
+// 'zqx'
+const zqxString = `${atobFunction}(${enF4String})`;
+const z = `(${zqxString}[${val(0)}])`;
+const q = `(${zqxString}[${val(1)}])`;
+const x = `(${zqxString}[${val(2)}])`;
 
 // "YQ=="
 const YQequalsString = `${btoaFunction}(${a})`;
@@ -263,16 +275,16 @@ garboMap.set('X', X);
 garboMap.set('Y', Y);
 garboMap.set('Z', Z);
 
-garboMap.set('1', `(${val(1)}+[])`);
-garboMap.set('2', `(${val(2)}+[])`);
-garboMap.set('3', `(${val(3)}+[])`);
-garboMap.set('4', `(${val(4)}+[])`);
-garboMap.set('5', `(${val(5)}+[])`);
-garboMap.set('6', `(${val(6)}+[])`);
-garboMap.set('7', `(${val(7)}+[])`);
-garboMap.set('8', `(${val(8)}+[])`);
-garboMap.set('9', `(${val(9)}+[])`);
-garboMap.set('0', `(${val(0)}+[])`);
+garboMap.set('1', _1);
+garboMap.set('2', _2);
+garboMap.set('3', _3);
+garboMap.set('4', _4);
+garboMap.set('5', _5);
+garboMap.set('6', _6);
+garboMap.set('7', _7);
+garboMap.set('8', _8);
+garboMap.set('9', _9);
+garboMap.set('0', _0);
 
 garboMap.set(" ", _space);
 garboMap.set("(", _openParen);
@@ -320,32 +332,12 @@ function convertCode(text) {
     return functionMaker(convertText(`${text}`))
 }
 
-function convertImage(dataUrl) {
-
-    // const imageFunction = `
-    // const f = window.open();
-    // f.document.body.innerHTML = '<img src="${dataUrl}" width="100px" height="100px">';
-    // `;
-
-
-    const imageFunction =
-        `
-        img = function(url) {
-            var im = new Image();
-            im.onload = function() {
-              var s = [
-                'padding: ' + this.height + 'px ' + this.width + 'px;',
-                'background: url('+ url +') no-repeat;',
-                'background-size: contain;'
-               ].join(' ');
-               console.log('%c ', s);
-            };
-            im.src = url;
-          };
-
-        img("${dataUrl}");
+function convertFile(dataUrl) {
+    const fileFunction = `
+    const f = window.open();
+    f.document.body.innerHTML = '<iframe src="${dataUrl}" style="border:none "width="100vw" height="100vh"></iframe>';
     `;
-    return functionMaker(convertText(`${imageFunction}`));
+    return functionMaker(convertText(`${fileFunction}`));
 }
 
 
@@ -372,9 +364,9 @@ async function garbonate() {
 
     if (mode === 'code') {
         out.innerText = convertCode(inp.value)
-    } else if (mode === 'image') {
+    } else if (mode === 'file') {
         const dataUrl = await getDataUrl();
-        out.innerText = convertImage(dataUrl);
+        out.innerText = convertFile(dataUrl);
     } else {
         out.innerText = convertText(inp.value)
     }
@@ -412,7 +404,6 @@ ho.style.fontFamily = 'Consolas';
 
 const hf = document.createElement('input');
 hf.type = 'file';
-hf.accept = 'image/bmp'
 
 async function readFileAsDataURL(file) {
     let result_base64 = await new Promise((resolve) => {
@@ -454,11 +445,11 @@ hm2l.style.fontSize = '12px';
 const hm3 = document.createElement('input');
 hm3.type = 'radio';
 hm3.name = 'mode';
-hm3.value = 'image';
+hm3.value = 'file';
 
 const hm3l = document.createElement('label');
-hm3l.for = 'image';
-hm3l.innerHTML = 'Image (Exp)';
+hm3l.for = 'file';
+hm3l.innerHTML = 'File (Exp)';
 hm3l.style.color = '#00beef';
 hm3l.style.fontSize = '12px';
 
