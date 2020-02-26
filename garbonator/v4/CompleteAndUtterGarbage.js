@@ -132,8 +132,6 @@ const regExpObject = `(${functionMaker(returnRegExpString)})`;
 // "function RegExp() { [native code] }"
 const regExpConstructorString = `(${regExpObject}[${constructorString}]+[])`;
 const p = `(${regExpConstructorString}[${val(14)}])`;
-// const x = `(${regExpConstructorString}[${val(13)}])`;
-const E = `(${regExpConstructorString}[${val(12)}])`;
 
 const atobString = [a, t, o, b].join('+');
 // "return atob"
@@ -151,6 +149,10 @@ const d2toString = [d, val(2), t, o].join('+');
 const wkhString = `${atobFunction}(${d2toString})`;
 const k = `(${wkhString}[${val(1)}])`;
 const h = `(${wkhString}[${val(2)}])`;
+
+// "MTE="
+const MTEequalsString = `${btoaFunction}(${val(11)})`;
+const E = `(${MTEequalsString}[${val(2)}])`;
 
 // "cw=="
 const cwequalsString = `${btoaFunction}(${s})`;
