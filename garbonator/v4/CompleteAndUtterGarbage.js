@@ -140,8 +140,13 @@ const btoaFunction = `(${functionMaker(returnBtoaString)})`;
 const d2toString = [d, val(2), t, o].join('+');
 // "wkh"
 const wkhString = `${atobFunction}(${d2toString})`;
-const k = `(${wkhString}[${val(1)}])`;
 const h = `(${wkhString}[${val(2)}])`;
+
+// "ti"
+const tiString = [t, i].join('+');
+// "dGk="
+const dGkequalsString = `${btoaFunction}(${tiString})`;
+const k = `(${dGkequalsString}[${val(2)}])`;
 
 // "cA"
 const cAString = [c, A].join('+');
@@ -172,11 +177,11 @@ const C = `(${ICAgString}[${val(1)}])`;
 const MTEequalsString = `${btoaFunction}(${val(11)})`;
 const E = `(${MTEequalsString}[${val(2)}])`;
 
-// "te"
-const teString = [t, e].join('+');
-// "dGU="
-const dGUequalString = `${btoaFunction}(${teString})`;
-const G = `(${dGUequalString}[${val(1)}])`;
+// "tf"
+const teString = [t, f].join('+');
+// "dGY="
+const dGYequalString = `${btoaFunction}(${teString})`;
+const G = `(${dGYequalString}[${val(1)}])`;
 
 // "tt"
 const ttString = [t, t].join('+');
@@ -184,12 +189,9 @@ const ttString = [t, t].join('+');
 const dHQequalString = `${btoaFunction}(${ttString})`;
 const H = `(${dHQequalString}[${val(1)}])`;
 
-// ")e"
-const paren_eString = [_closeParen, e].join('+');
-// "KWU=""
-const KWUString = `${btoaFunction}(${paren_eString})`;
-const K = `(${KWUString}[${val(0)}])`;
-const W = `(${KWUString}[${val(1)}])`;
+// "KQ=="
+const KQequalsString = `${btoaFunction}(${_openParen})`;
+const K = `(${KQequalsString}[${val(0)}])`;
 
 // "MQ=="
 const MQequalsString = `${btoaFunction}(${val(1)})`;
@@ -215,6 +217,12 @@ const fuString = [f, u].join('+');
 // "ZnU="
 const ZnUequalString = `${btoaFunction}(${fuString})`;
 const U = `(${ZnUequalString}[${val(2)}])`;
+
+// "af"
+const afString = [a, f].join('+');
+// "YWY="
+const YWYequalString = `${btoaFunction}(${afString})`;
+const W = `(${YWYequalString}[${val(1)}])`;
 
 // "ut"
 const utString = [u, t].join('+');
