@@ -89,8 +89,6 @@ const N = `(${numberConstructorString}[${val(9)}])`;
 const booleanConstructorString = `((![])[${constructorString}]+[])`;
 const B = `(${booleanConstructorString}[${val(9)}])`;
 
-
-
 // "function Function() { [native code] }"
 const functionConstructorString = `([][${flatString}][${constructorString}]+[])`;
 const F = `(${functionConstructorString}[${val(9)}])`;
@@ -218,6 +216,10 @@ const fuString = [f, u].join('+');
 const ZnUequalString = `${btoaFunction}(${fuString})`;
 const U = `(${ZnUequalString}[${val(2)}])`;
 
+// "VQ=="
+const VQequalsString = `${btoaFunction}(${U})`;
+const V = `(${VQequalsString}[${val(0)}])`;
+
 // "af"
 const afString = [a, f].join('+');
 // "YWY="
@@ -239,11 +241,7 @@ const Q = `(${YQequalsString}[${val(1)}])`;
 const ZgequalsString = `${btoaFunction}(${f})`;
 const Z = `(${ZgequalsString}[${val(0)}])`;
 
-// "WFY"
-const WFYString = [W, F, Y].join('+');
-// "XV"
-const XVString = `${atobFunction}(${WFYString})`;
-const V = `(${XVString}[${val(1)}])`;
+
 
 const documentString = [d, o, c, u, m, e, n, t].join('+');
 // "return document"
@@ -418,13 +416,21 @@ function convertFile(dataUrl) {
 const sizeMap = [];
 garboMap.forEach((v, k) => sizeMap.push([k, v.length]));
 sizeMap.push(['@', codePoint('@').length]);
-console.log(sizeMap);
+
 
 const testString1 = 'abcdefghijklmnopqrstuvwxyz';
 const testString2 = 'abcdefghijklmnopqrstuvwxyz'.toUpperCase();
 const testString3 = '1234567890';
 const testString4 = ` (){}[]<>/=".',#?:`;
 
+const test1 = eval(convertText(testString1)) === testString1;
+const test2 = eval(convertText(testString2)) === testString2;
+const test3 = eval(convertText(testString3)) === testString3;
+const test4 = eval(convertText(testString4)) === testString4;
+const testAll = test1 && test2 && test3 && test4;
+
+console.log(sizeMap);
+console.log('tests pass: ', testAll);
 
 // ==================================================================================================
 
