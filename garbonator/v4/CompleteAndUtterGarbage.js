@@ -166,8 +166,9 @@ const YQequalsString = `${btoaFunction}(${a})`;
 const Y = `(${YQequalsString}[${val(0)}])`;
 const Q = `(${YQequalsString}[${val(1)}])`;
 
-
+// "ddI"
 const ddIString = [d, d, I].join('+');
+// "ZGRJ"
 const ZGRJString = `${btoaFunction}(${ddIString})`;
 const Z = `(${ZGRJString}[${val(0)}])`;
 const G = `(${ZGRJString}[${val(1)}])`;
@@ -189,12 +190,20 @@ const PCgString = `${btoaFunction}(${less_parenString})`;
 const P = `(${PCgString}[${val(0)}])`;
 const C = `(${PCgString}[${val(1)}])`;
 
-// ""WFY""
+// "WFY"
 const WFYString = [W, F, Y].join('+');
 // "XV"
 const XVString = `${atobFunction}(${WFYString})`;
 const X = `(${XVString}[${val(0)}])`;
 const V = `(${XVString}[${val(1)}])`;
+
+// "Iycs"
+const IycsString = [I,y,c,s].join('+');
+// "#',"
+const poundSingleQuoteCommaString = `${atobFunction}(${IycsString})`;
+const _pound = `(${poundSingleQuoteCommaString}[${val(0)}])`;
+const _singleQuote = `(${poundSingleQuoteCommaString}[${val(1)}])`;
+const _comma = `(${poundSingleQuoteCommaString}[${val(2)}])`;
 
 // "1/2"
 const halfString = [val(1), _forwardSlash, val(2)].join('+');
@@ -299,6 +308,9 @@ garboMap.set("/", _forwardSlash);
 garboMap.set("=", _equals);
 garboMap.set('"', _doubleQuote);
 garboMap.set('.', _period);
+garboMap.set("'", _singleQuote);
+garboMap.set(',', _comma);
+garboMap.set('#', _pound);
 
 garboMap.set(`
 `, _newLine);
