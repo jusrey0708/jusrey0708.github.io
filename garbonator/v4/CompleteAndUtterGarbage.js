@@ -123,16 +123,6 @@ const returnString = [r, e, t, u, r, n].join('+');
 const functionMaker = (func) =>
     `([])[${flatString}][${constructorString}](${func})()`;
 
-// "/f/"
-const regExpObjectString = [_forwardSlash, f, _forwardSlash].join('+');
-// "return /f/"
-const returnRegExpString = `(${returnString}+${_space}+${regExpObjectString})`;
-const regExpObject = `(${functionMaker(returnRegExpString)})`;
-
-// "function RegExp() { [native code] }"
-const regExpConstructorString = `(${regExpObject}[${constructorString}]+[])`;
-const p = `(${regExpConstructorString}[${val(14)}])`;
-
 const atobString = [a, t, o, b].join('+');
 // "return atob"
 const returnAtobString = `(${returnString}+${_space}+${atobString})`;
@@ -143,6 +133,9 @@ const btoaString = [b, t, o, a].join('+');
 const returnBtoaString = `(${returnString}+${_space}+${btoaString})`;
 const btoaFunction = `(${functionMaker(returnBtoaString)})`;
 
+// --------------------------
+
+
 // "d2to"
 const d2toString = [d, val(2), t, o].join('+');
 // "wkh"
@@ -150,21 +143,84 @@ const wkhString = `${atobFunction}(${d2toString})`;
 const k = `(${wkhString}[${val(1)}])`;
 const h = `(${wkhString}[${val(2)}])`;
 
-// "MTE="
-const MTEequalsString = `${btoaFunction}(${val(11)})`;
-const E = `(${MTEequalsString}[${val(2)}])`;
+// "cA"
+const cAString = [c, A].join('+');
+const p = `${atobFunction}(${cAString})`;
 
 // "cw=="
 const cwequalsString = `${btoaFunction}(${s})`;
 const w = `(${cwequalsString}[${val(1)}])`;
 
+// "en"
+const enString = [e, n].join('+');
+const z = `${atobFunction}(${enString})`;
+
 // "enF4"
 const enF4String = [e, n, F, val(4)].join('+');
 // 'zqx'
 const zqxString = `${atobFunction}(${enF4String})`;
-const z = `(${zqxString}[${val(0)}])`;
 const q = `(${zqxString}[${val(1)}])`;
 const x = `(${zqxString}[${val(2)}])`;
+
+// "  "
+const spaceSpaceString = [_space, _space].join('+');
+// "ICAg"
+const ICAgString = `${btoaFunction}(${spaceSpaceString})`;
+const C = `(${ICAgString}[${val(1)}])`;
+
+// "MTE="
+const MTEequalsString = `${btoaFunction}(${val(11)})`;
+const E = `(${MTEequalsString}[${val(2)}])`;
+
+// "te"
+const teString = [t, e].join('+');
+// "dGU="
+const dGUequalString = `${btoaFunction}(${teString})`;
+const G = `(${dGUequalString}[${val(1)}])`;
+
+// "tt"
+const ttString = [t, t].join('+');
+// "dHQ="
+const dHQequalString = `${btoaFunction}(${ttString})`;
+const H = `(${dHQequalString}[${val(1)}])`;
+
+// ")e"
+const paren_eString = [_closeParen, e].join('+');
+// "KWU=""
+const KWUString = `${btoaFunction}(${paren_eString})`;
+const K = `(${KWUString}[${val(0)}])`;
+const W = `(${KWUString}[${val(1)}])`;
+
+// "MQ=="
+const MQequalsString = `${btoaFunction}(${val(1)})`;
+const M = `(${MQequalsString}[${val(0)}])`;
+
+// "PA=="
+const PAqualsString = `${btoaFunction}(${_lessthan})`;
+const P = `(${PAqualsString}[${val(0)}])`;
+
+// "ddI"
+const ddIString = [d, d, I].join('+');
+// "ZGRJ"
+const ZGRJString = `${btoaFunction}(${ddIString})`;
+const R = `(${ZGRJString}[${val(2)}])`;
+const J = `(${ZGRJString}[${val(3)}])`;
+
+// "MTA="
+const MTAequalsString = `${btoaFunction}(${val(10)})`;
+const T = `(${MTAequalsString}[${val(1)}])`;
+
+// "fu"
+const fuString = [f, u].join('+');
+// "ZnU="
+const ZnUequalString = `${btoaFunction}(${fuString})`;
+const U = `(${ZnUequalString}[${val(2)}])`;
+
+// "ut"
+const utString = [u, t].join('+');
+// "dXQ="
+const dXQequalString = `${btoaFunction}(${utString})`;
+const X = `(${dXQequalString}[${val(1)}])`;
 
 // "YQ=="
 const YQequalsString = `${btoaFunction}(${a})`;
@@ -175,47 +231,21 @@ const Q = `(${YQequalsString}[${val(1)}])`;
 const ZgequalsString = `${btoaFunction}(${f})`;
 const Z = `(${ZgequalsString}[${val(0)}])`;
 
-// "MQ=="
-const MQequalsString = `${btoaFunction}(${val(1)})`;
-const M = `(${MQequalsString}[${val(0)}])`;
-
-// "MTA="
-const MTAqualsString = `${btoaFunction}(${val(10)})`;
-const T = `(${MTAqualsString}[${val(1)}])`;
-
-// "ddI"
-const ddIString = [d, d, I].join('+');
-// "ZGRJ"
-const ZGRJString = `${btoaFunction}(${ddIString})`;
-const G = `(${ZGRJString}[${val(1)}])`;
-const R = `(${ZGRJString}[${val(2)}])`;
-const J = `(${ZGRJString}[${val(3)}])`;
-
-// ")e"
-const paren_eString = [_closeParen, e].join('+');
-// "KWU=""
-const KWUString = `${btoaFunction}(${paren_eString})`;
-const K = `(${KWUString}[${val(0)}])`;
-const W = `(${KWUString}[${val(1)}])`;
-const U = `(${KWUString}[${val(2)}])`;
-
-
-// "PA=="
-const PAqualsString = `${btoaFunction}(${_lessthan})`;
-const P = `(${PAqualsString}[${val(0)}])`;
-
-// "  "
-const spaceSpaceString = [_space, _space].join('+');
-// "ICAg"
-const ICAgString = `${btoaFunction}(${spaceSpaceString})`;
-const C = `(${ICAgString}[${val(1)}])`;
-
 // "WFY"
 const WFYString = [W, F, Y].join('+');
 // "XV"
 const XVString = `${atobFunction}(${WFYString})`;
-const X = `(${XVString}[${val(0)}])`;
 const V = `(${XVString}[${val(1)}])`;
+
+const documentString = [d, o, c, u, m, e, n, t].join('+');
+// "return document"
+const returnDocumentString = `(${returnString}+${_space}+${documentString})`;
+const documentObject = `(${functionMaker(returnDocumentString)})`;
+// "function HTMLDocument() { [native code] }"
+const documentConstructorString = `(${documentObject}+[])`;
+const L = `(${documentConstructorString}[${val(11)}])`;
+const D = `(${documentConstructorString}[${val(12)}])`;
+
 
 // "Iycs"
 const IycsString = [I,y,c,s].join('+');
@@ -225,6 +255,20 @@ const _pound = `(${poundSingleQuoteCommaString}[${val(0)}])`;
 const _singleQuote = `(${poundSingleQuoteCommaString}[${val(1)}])`;
 const _comma = `(${poundSingleQuoteCommaString}[${val(2)}])`;
 
+// "/f/"
+const regExpObjectString = [_forwardSlash, f, _forwardSlash].join('+');
+// "return /f/"
+const returnRegExpString = `(${returnString}+${_space}+${regExpObjectString})`;
+const regExpObject = `(${functionMaker(returnRegExpString)})`;
+// "/(?:)/"
+const regExpConstructorString = `(${regExpObject}[${constructorString}]()+[])`
+const _question = `(${regExpConstructorString}[${val(2)}])`;
+
+// "Oj"
+const Oj8String = [O, j].join('+');
+// ":"
+const _colon = `${atobFunction}(${Oj8String})`;
+
 // "1/2"
 const halfString = [val(1), _forwardSlash, val(2)].join('+');
 // "return 1/2"
@@ -232,17 +276,6 @@ const returnHalfString = `(${returnString}+${_space}+${halfString})`;
 const zeroPointFive = `(${functionMaker(returnHalfString)})`;
 const zeroPointFiveString = `(${zeroPointFive}+[])`;
 const _period = `(${zeroPointFiveString}[${val(1)}])`;
-
-const documentString = [d, o, c, u, m, e, n, t].join('+');
-// "return document"
-const returnDocumentString = `(${returnString}+${_space}+${documentString})`;
-const documentObject = `(${functionMaker(returnDocumentString)})`;
-// "function HTMLDocument() { [native code] }"
-const documentConstructorString = `(${documentObject}+[])`;
-const H = `(${documentConstructorString}[${val(8)}])`;
-const L = `(${documentConstructorString}[${val(11)}])`;
-const D = `(${documentConstructorString}[${val(12)}])`;
-
 
 //===========================================================
 
@@ -329,6 +362,8 @@ garboMap.set('.', _period);
 garboMap.set("'", _singleQuote);
 garboMap.set(',', _comma);
 garboMap.set('#', _pound);
+garboMap.set('?', _question);
+garboMap.set(':', _colon);
 
 garboMap.set(`
 `, _newLine);
@@ -380,6 +415,7 @@ console.log(sizeMap);
 const testString1 = 'abcdefghijklmnopqrstuvwxyz';
 const testString2 = 'abcdefghijklmnopqrstuvwxyz'.toUpperCase();
 const testString3 = '1234567890';
+const testString4 = ` (){}[]<>/=".',#?:`;
 
 
 // ==================================================================================================
