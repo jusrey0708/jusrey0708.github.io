@@ -154,7 +154,7 @@ const k = `(${wkhString}[${val(1)}])`;
 const h = `(${wkhString}[${val(2)}])`;
 
 // "enF4"
-const enF4String = [e, n, F, _4].join('+');
+const enF4String = [e, n, F, val(4)].join('+');
 // 'zqx'
 const zqxString = `${atobFunction}(${enF4String})`;
 const z = `(${zqxString}[${val(0)}])`;
