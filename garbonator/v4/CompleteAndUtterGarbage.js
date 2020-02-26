@@ -149,9 +149,12 @@ const btoaFunction = `(${functionMaker(returnBtoaString)})`;
 const d2toString = [d, val(2), t, o].join('+');
 // "wkh"
 const wkhString = `${atobFunction}(${d2toString})`;
-const w = `(${wkhString}[${val(0)}])`;
 const k = `(${wkhString}[${val(1)}])`;
 const h = `(${wkhString}[${val(2)}])`;
+
+// "cw=="
+const cwequalsString = `${btoaFunction}(${s})`;
+const w = `(${cwequalsString}[${val(1)}])`;
 
 // "enF4"
 const enF4String = [e, n, F, val(4)].join('+');
@@ -166,11 +169,22 @@ const YQequalsString = `${btoaFunction}(${a})`;
 const Y = `(${YQequalsString}[${val(0)}])`;
 const Q = `(${YQequalsString}[${val(1)}])`;
 
+// "Zg=="
+const ZgequalsString = `${btoaFunction}(${f})`;
+const Z = `(${ZgequalsString}[${val(0)}])`;
+
+// "MQ=="
+const MQequalsString = `${btoaFunction}(${val(1)})`;
+const M = `(${MQequalsString}[${val(0)}])`;
+
+// "MTA="
+const MTAqualsString = `${btoaFunction}(${val(10)})`;
+const T = `(${MTAqualsString}[${val(1)}])`;
+
 // "ddI"
 const ddIString = [d, d, I].join('+');
 // "ZGRJ"
 const ZGRJString = `${btoaFunction}(${ddIString})`;
-const Z = `(${ZGRJString}[${val(0)}])`;
 const G = `(${ZGRJString}[${val(1)}])`;
 const R = `(${ZGRJString}[${val(2)}])`;
 const J = `(${ZGRJString}[${val(3)}])`;
@@ -220,8 +234,6 @@ const documentObject = `(${functionMaker(returnDocumentString)})`;
 // "function HTMLDocument() { [native code] }"
 const documentConstructorString = `(${documentObject}+[])`;
 const H = `(${documentConstructorString}[${val(8)}])`;
-const T = `(${documentConstructorString}[${val(9)}])`;
-const M = `(${documentConstructorString}[${val(10)}])`;
 const L = `(${documentConstructorString}[${val(11)}])`;
 const D = `(${documentConstructorString}[${val(12)}])`;
 
