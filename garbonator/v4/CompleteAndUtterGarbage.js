@@ -199,12 +199,16 @@ const K = `(${KWUString}[${val(0)}])`;
 const W = `(${KWUString}[${val(1)}])`;
 const U = `(${KWUString}[${val(2)}])`;
 
-// "<("
-const less_parenString = [_lessthan, _openParen].join('+');
-// "PCg="
-const PCgString = `${btoaFunction}(${less_parenString})`;
-const P = `(${PCgString}[${val(0)}])`;
-const C = `(${PCgString}[${val(1)}])`;
+
+// "PA=="
+const PAqualsString = `${btoaFunction}(${_lessthan})`;
+const P = `(${PAqualsString}[${val(0)}])`;
+
+// "  "
+const spaceSpaceString = [_space, _space].join('+');
+// "ICAg"
+const ICAgString = `${btoaFunction}(${spaceSpaceString})`;
+const C = `(${ICAgString}[${val(1)}])`;
 
 // "WFY"
 const WFYString = [W, F, Y].join('+');
