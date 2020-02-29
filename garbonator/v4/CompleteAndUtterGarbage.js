@@ -147,26 +147,27 @@ const dGkequalsString = `${btoaFunction}(${tiString})`;
 const k = `(${dGkequalsString}[${val(2)}])`;
 
 // "iii"
-const iiiString = [i,i,i].join('+');
+const iiiString = [i, i, i].join('+');
 // "aWlp"
 const aWlpString = `${btoaFunction}(${iiiString})`;
 const p = `(${aWlpString}[${val(3)}])`
 
-// "cc"
-const ccString = [c,c].join('+');
-const q = `${atobFunction}(${ccString})`;
+// "ca"
+const caString = [c, a].join('+');
+const q = `${atobFunction}(${caString})`;
 
 // "cw=="
 const cwequalsString = `${btoaFunction}(${s})`;
 const w = `(${cwequalsString}[${val(1)}])`;
 
+// "eI"
+const eIString = [e, I].join('+');
+const x = `${atobFunction}(${eIString})`;
+
 // "en"
 const enString = [e, n].join('+');
 const z = `${atobFunction}(${enString})`;
 
-// "eI"
-const eIString = [e, I].join('+');
-const x = `${atobFunction}(${eIString})`;
 
 // "  "
 const spaceSpaceString = [_space, _space].join('+');
@@ -268,22 +269,49 @@ const IycsString = [I, y, c, s].join('+');
 // "#',"
 const poundSingleQuoteCommaString = `${atobFunction}(${IycsString})`;
 const _pound = `(${poundSingleQuoteCommaString}[${val(0)}])`;
-const _singleQuote = `(${poundSingleQuoteCommaString}[${val(1)}])`;
-const _comma = `(${poundSingleQuoteCommaString}[${val(2)}])`;
 
-// "/f/"
-const regExpObjectString = [_forwardSlash, f, _forwardSlash].join('+');
-// "return /f/"
-const returnRegExpString = `(${returnString}+${_space}+${regExpObjectString})`;
-const regExpObject = `(${functionMaker(returnRegExpString)})`;
-// "/(?:)/"
-const regExpConstructorString = `(${regExpObject}[${constructorString}]()+[])`
-const _question = `(${regExpConstructorString}[${val(2)}])`;
+// "cjr"
+const cjrString = [c, j, r].join('+');
+// "r:"
+const rColonString = `${atobFunction}(${cjrString})`;
+const _colon = `(${rColonString}[${val(1)}])`;
 
-// "Oj"
-const Oj8String = [O, j].join('+');
-// ":"
-const _colon = `${atobFunction}(${Oj8String})`;
+// "cj8"
+const cj8String = [c, j, _8].join('+');
+// "r?"
+const rQuestionString = `${atobFunction}(${cj8String})`;
+const _question = `(${rQuestionString}[${val(1)}])`;
+
+// "cic"
+const cicString = [c, i, c].join('+');
+// "r'"
+const rSingleQuoteString = `${atobFunction}(${cicString})`;
+const _singleQuote = `(${rSingleQuoteString}[${val(1)}])`;
+
+// "cia"
+const ciaString = [c, i, a].join('+');
+// "r&"
+const rAmpersandString = `${atobFunction}(${ciaString})`;
+const _ampersand = `(${rAmpersandString}[${val(1)}])`;
+
+// "ci0"
+const ci0String = [c, i, _0].join('+');
+// "r&"
+const rMinusString = `${atobFunction}(${ci0String})`;
+const _minus = `(${rMinusString}[${val(1)}])`;
+
+// "cir"
+const cirString = [c, i, r].join('+');
+// "r*"
+const rStarString = `${atobFunction}(${cirString})`;
+const _asterisk = `(${rStarString}[${val(1)}])`;
+
+// "ciy"
+const ciyString = [c, i, y].join('+');
+// "r*"
+const rCommaString = `${atobFunction}(${ciyString})`;
+const _comma = `(${rCommaString}[${val(1)}])`;
+
 
 // "1/2"
 const halfString = [val(1), _forwardSlash, val(2)].join('+');
@@ -380,6 +408,9 @@ garboMap.set(',', _comma);
 garboMap.set('#', _pound);
 garboMap.set('?', _question);
 garboMap.set(':', _colon);
+garboMap.set('&', _ampersand);
+garboMap.set('-', _minus);
+garboMap.set('*', _asterisk);
 
 garboMap.set(`
 `, _newLine);
@@ -431,7 +462,7 @@ sizeMap.push(['@', codePoint('@').length]);
 const testString1 = 'abcdefghijklmnopqrstuvwxyz';
 const testString2 = 'abcdefghijklmnopqrstuvwxyz'.toUpperCase();
 const testString3 = '1234567890';
-const testString4 = ` (){}[]<>/=".',#?:`;
+const testString4 = ` (){}[]<>/=".',#?:&-*`;
 
 const test1 = eval(convertText(testString1)) === testString1;
 const test2 = eval(convertText(testString2)) === testString2;
