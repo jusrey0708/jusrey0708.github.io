@@ -10,16 +10,16 @@ function val(n) {
 
 }
 
-const _1= `(${val(1)}+[])`
-const _2= `(${val(2)}+[])`
-const _3= `(${val(3)}+[])`
-const _4= `(${val(4)}+[])`
-const _5= `(${val(5)}+[])`
-const _6= `(${val(6)}+[])`
-const _7= `(${val(7)}+[])`
-const _8= `(${val(8)}+[])`
-const _9= `(${val(9)}+[])`
-const _0= `(${val(0)}+[])`
+const _1 = `(${val(1)}+[])`
+const _2 = `(${val(2)}+[])`
+const _3 = `(${val(3)}+[])`
+const _4 = `(${val(4)}+[])`
+const _5 = `(${val(5)}+[])`
+const _6 = `(${val(6)}+[])`
+const _7 = `(${val(7)}+[])`
+const _8 = `(${val(8)}+[])`
+const _9 = `(${val(9)}+[])`
+const _0 = `(${val(0)}+[])`
 
 
 const trueString = '(!![]+[])';
@@ -146,9 +146,15 @@ const tiString = [t, i].join('+');
 const dGkequalsString = `${btoaFunction}(${tiString})`;
 const k = `(${dGkequalsString}[${val(2)}])`;
 
-// "cA"
-const cAString = [c, A].join('+');
-const p = `${atobFunction}(${cAString})`;
+// "iii"
+const iiiString = [i,i,i].join('+');
+// "aWlp"
+const aWlpString = `${btoaFunction}(${iiiString})`;
+const p = `(${aWlpString}[${val(3)}])`
+
+// "cc"
+const ccString = [c,c].join('+');
+const q = `${atobFunction}(${ccString})`;
 
 // "cw=="
 const cwequalsString = `${btoaFunction}(${s})`;
@@ -158,12 +164,9 @@ const w = `(${cwequalsString}[${val(1)}])`;
 const enString = [e, n].join('+');
 const z = `${atobFunction}(${enString})`;
 
-// "enF4"
-const enF4String = [e, n, F, val(4)].join('+');
-// 'zqx'
-const zqxString = `${atobFunction}(${enF4String})`;
-const q = `(${zqxString}[${val(1)}])`;
-const x = `(${zqxString}[${val(2)}])`;
+// "eI"
+const eIString = [e, I].join('+');
+const x = `${atobFunction}(${eIString})`;
 
 // "  "
 const spaceSpaceString = [_space, _space].join('+');
@@ -199,12 +202,17 @@ const M = `(${MQequalsString}[${val(0)}])`;
 const PAqualsString = `${btoaFunction}(${_lessthan})`;
 const P = `(${PAqualsString}[${val(0)}])`;
 
-// "ddI"
-const ddIString = [d, d, I].join('+');
-// "ZGRJ"
-const ZGRJString = `${btoaFunction}(${ddIString})`;
-const R = `(${ZGRJString}[${val(2)}])`;
-const J = `(${ZGRJString}[${val(3)}])`;
+// "ttt"
+const tttString = [t, t, t].join('+');
+// "dHR0"
+const dHR0String = `${btoaFunction}(${tttString})`;
+const R = `(${dHR0String}[${val(2)}])`;
+
+// "rrf"
+const rrfString = [r, r, f].join('+');
+// "cnJm"
+const cnJmString = `${btoaFunction}(${rrfString})`;
+const J = `(${cnJmString}[${val(2)}])`;
 
 // "MTA="
 const MTAequalsString = `${btoaFunction}(${val(10)})`;
@@ -216,9 +224,11 @@ const fuString = [f, u].join('+');
 const ZnUequalString = `${btoaFunction}(${fuString})`;
 const U = `(${ZnUequalString}[${val(2)}])`;
 
-// "VQ=="
-const VQequalsString = `${btoaFunction}(${U})`;
-const V = `(${VQequalsString}[${val(0)}])`;
+// "uuu"
+const uuuString = [u, u, u].join('+');
+// "dXV1"
+const dxV1String = `${btoaFunction}(${uuuString})`;
+const V = `(${dxV1String}[${val(2)}])`;
 
 // "af"
 const afString = [a, f].join('+');
@@ -254,7 +264,7 @@ const D = `(${documentConstructorString}[${val(12)}])`;
 
 
 // "Iycs"
-const IycsString = [I,y,c,s].join('+');
+const IycsString = [I, y, c, s].join('+');
 // "#',"
 const poundSingleQuoteCommaString = `${atobFunction}(${IycsString})`;
 const _pound = `(${poundSingleQuoteCommaString}[${val(0)}])`;
