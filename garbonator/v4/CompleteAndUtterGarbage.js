@@ -263,12 +263,11 @@ const documentConstructorString = `(${documentObject}+[])`;
 const L = `(${documentConstructorString}[${val(11)}])`;
 const D = `(${documentConstructorString}[${val(12)}])`;
 
-
-// "Iycs"
-const IycsString = [I, y, c, s].join('+');
-// "#',"
-const poundSingleQuoteCommaString = `${atobFunction}(${IycsString})`;
-const _pound = `(${poundSingleQuoteCommaString}[${val(0)}])`;
+// "ciN"
+const ciNString = [c, i, N].join('+');
+// "r#"
+const rPoundString = `${atobFunction}(${ciNString})`;
+const _pound = `(${rPoundString}[${val(1)}])`;
 
 // "cjr"
 const cjrString = [c, j, r].join('+');
@@ -296,9 +295,15 @@ const _ampersand = `(${rAmpersandString}[${val(1)}])`;
 
 // "ci0"
 const ci0String = [c, i, _0].join('+');
-// "r&"
+// "r-"
 const rMinusString = `${atobFunction}(${ci0String})`;
 const _minus = `(${rMinusString}[${val(1)}])`;
+
+// "cis"
+const cisString = [c, i, s].join('+');
+// "r+"
+const rPlusString = `${atobFunction}(${cisString})`;
+const _plus = `(${rPlusString}[${val(1)}])`;
 
 // "cir"
 const cirString = [c, i, r].join('+');
@@ -306,11 +311,12 @@ const cirString = [c, i, r].join('+');
 const rStarString = `${atobFunction}(${cirString})`;
 const _asterisk = `(${rStarString}[${val(1)}])`;
 
-// "ciy"
-const ciyString = [c, i, y].join('+');
-// "r*"
-const rCommaString = `${atobFunction}(${ciyString})`;
-const _comma = `(${rCommaString}[${val(1)}])`;
+// "concat"
+const concatString = [c,o,n,c,a,t].join('+');
+// "0,0"
+const zeroCommaZeroString = `([+[]][${concatString}](+[])+[])`
+const _comma = `(${zeroCommaZeroString}[${val(1)}])`;
+
 
 
 // "1/2"
@@ -411,6 +417,7 @@ garboMap.set(':', _colon);
 garboMap.set('&', _ampersand);
 garboMap.set('-', _minus);
 garboMap.set('*', _asterisk);
+garboMap.set('+', _plus);
 
 garboMap.set(`
 `, _newLine);
