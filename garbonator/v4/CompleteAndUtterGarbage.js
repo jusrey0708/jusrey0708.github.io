@@ -116,6 +116,13 @@ const objectObjectString = `(${object}+[])`;
 const O = `(${objectObjectString}[${val(8)}])`;
 
 
+// "concat"
+const concatString = [c,o,n,c,a,t].join('+');
+// "0,0"
+const zeroCommaZeroString = `([+[]][${concatString}](+[])+[])`
+const _comma = `(${zeroCommaZeroString}[${val(1)}])`;
+
+
 const returnString = [r, e, t, u, r, n].join('+');
 
 const functionMaker = (func) =>
@@ -140,17 +147,17 @@ const d2toString = [d, val(2), t, o].join('+');
 const wkhString = `${atobFunction}(${d2toString})`;
 const h = `(${wkhString}[${val(2)}])`;
 
-// "ti"
-const tiString = [t, i].join('+');
-// "dGk="
-const dGkequalsString = `${btoaFunction}(${tiString})`;
-const k = `(${dGkequalsString}[${val(2)}])`;
+// "fi"
+const fiString = [f, i].join('+');
+// "Zmk="
+const ZmkequalsString = `${btoaFunction}(${fiString})`;
+const k = `(${ZmkequalsString}[${val(2)}])`;
 
-// "iii"
-const iiiString = [i, i, i].join('+');
-// "aWlp"
-const aWlpString = `${btoaFunction}(${iiiString})`;
-const p = `(${aWlpString}[${val(3)}])`
+// "ffi"
+const ffiString = [f, f, i].join('+');
+// "ZmZp"
+const ZmZpString = `${btoaFunction}(${ffiString})`;
+const p = `(${ZmZpString}[${val(3)}])`
 
 // "ca"
 const caString = [c, a].join('+');
@@ -160,9 +167,11 @@ const q = `${atobFunction}(${caString})`;
 const cwequalsString = `${btoaFunction}(${s})`;
 const w = `(${cwequalsString}[${val(1)}])`;
 
-// "eI"
-const eIString = [e, I].join('+');
-const x = `${atobFunction}(${eIString})`;
+// "f31"
+const f31String = [f,_3,_1].join('+');
+// "ZjMx"
+const ZjMxString = `${btoaFunction}(${f31String})`;
+const x = `(${ZjMxString}[${val(3)}])`;
 
 // "en"
 const enString = [e, n].join('+');
@@ -203,11 +212,11 @@ const M = `(${MQequalsString}[${val(0)}])`;
 const PAqualsString = `${btoaFunction}(${_lessthan})`;
 const P = `(${PAqualsString}[${val(0)}])`;
 
-// "ttt"
-const tttString = [t, t, t].join('+');
-// "dHR0"
-const dHR0String = `${btoaFunction}(${tttString})`;
-const R = `(${dHR0String}[${val(2)}])`;
+// "ttf"
+const ttfString = [t, t, f].join('+');
+// "dHRm"
+const dHRmString = `${btoaFunction}(${ttfString})`;
+const R = `(${dHRmString}[${val(2)}])`;
 
 // "rrf"
 const rrfString = [r, r, f].join('+');
@@ -253,15 +262,14 @@ const ZgequalsString = `${btoaFunction}(${f})`;
 const Z = `(${ZgequalsString}[${val(0)}])`;
 
 
-
 const documentString = [d, o, c, u, m, e, n, t].join('+');
 // "return document"
 const returnDocumentString = `(${returnString}+${_space}+${documentString})`;
 const documentObject = `(${functionMaker(returnDocumentString)})`;
 // "function HTMLDocument() { [native code] }"
-const documentConstructorString = `(${documentObject}+[])`;
-const L = `(${documentConstructorString}[${val(11)}])`;
-const D = `(${documentConstructorString}[${val(12)}])`;
+const documentObjectString = `(${documentObject}+[])`;
+const L = `(${documentObjectString}[${val(11)}])`;
+const D = `(${documentObjectString}[${val(12)}])`;
 
 // "ciN"
 const ciNString = [c, i, N].join('+');
@@ -299,7 +307,7 @@ const ci0String = [c, i, _0].join('+');
 const rMinusString = `${atobFunction}(${ci0String})`;
 const _minus = `(${rMinusString}[${val(1)}])`;
 
-// "cis"
+// "cit"
 const cisString = [c, i, s].join('+');
 // "r+"
 const rPlusString = `${atobFunction}(${cisString})`;
@@ -310,13 +318,6 @@ const cirString = [c, i, r].join('+');
 // "r*"
 const rStarString = `${atobFunction}(${cirString})`;
 const _asterisk = `(${rStarString}[${val(1)}])`;
-
-// "concat"
-const concatString = [c,o,n,c,a,t].join('+');
-// "0,0"
-const zeroCommaZeroString = `([+[]][${concatString}](+[])+[])`
-const _comma = `(${zeroCommaZeroString}[${val(1)}])`;
-
 
 
 // "1/2"
@@ -478,6 +479,7 @@ const test4 = eval(convertText(testString4)) === testString4;
 const testAll = test1 && test2 && test3 && test4;
 
 console.log(sizeMap);
+// console.log(sizeMap.sort((a,b)=>(b[1]-a[1])));
 console.log('tests pass: ', testAll);
 
 // ==================================================================================================
