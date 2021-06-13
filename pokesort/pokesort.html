@@ -1,0 +1,26 @@
+<head>
+    <link rel="stylesheet" href="pokesort.css">
+</head>
+
+<body>
+
+    <div class="row">
+        <div class="column" id="option" onclick="handleMore()"></div>
+        <div class="column" id="current" onclick="handleLess()"></div>
+    </div>
+    
+    <div class="instructions">
+        <span > Click the one you like more.</span>
+        <br>
+        <span > This WILL take a while. </span>
+        <span id='percent'></span>
+    </div>
+
+    <hr>
+    <input type="checkbox" id="result" name="result" onchange="redoResults()">
+    <label for="result"> Show Full Results (so far)</label><br>
+    <div id="results"></div>
+
+</body>
+
+<script type="text/javascript" src="pokesort.js"></script>
