@@ -39,7 +39,6 @@ function init() {
 }
 
 function goRando() {
-    console.log(all);
     const index = Math.floor(Math.random() * all.length);
     const rando = all[index];
     all.splice(index, 1);
