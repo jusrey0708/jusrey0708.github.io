@@ -8,13 +8,12 @@ function init(n) {
         const index = Math.floor(Math.random() * all.length);
         const rando = all[index];
         all.splice(index, 1);
-        const percentDone = (100-(all.length/n)*100).toFixed(2);
+        const percentDone = (100 - (all.length / n) * 100).toFixed(2);
         document.getElementById('percent').innerHTML = `~${percentDone}% complete`
         return rando;
     }
 
     const initialCurrent = goRando();
-    console.log(initialCurrent, all);
     all.splice(0, 1);
 
     tree = [[], initialCurrent, []];
@@ -27,7 +26,7 @@ function init(n) {
 
     document.getElementById('current').innerHTML = getImageById(tree[1]);
     document.getElementById('option').innerHTML = getImageById(choice);
-    document.getElementById('results').innerHTML = results();
+    document.getElementById('results').innerHTML = resultDisplay();
 }
 
 
@@ -52,8 +51,9 @@ function handleLess() {
 }
 
 function handleNewCurrent() {
-    document.getElementById('results').innerHTML = results();
+    document.getElementById('results').innerHTML = resultDisplay();
     choice = goRando();
+    tree = rebalanceTree();
     currentBranch = tree;
     if (choice != undefined) {
         document.getElementById('current').innerHTML = getImageById(tree[1]);
@@ -66,23 +66,51 @@ function handleNewCurrent() {
     }
 }
 
+function rebalanceTree() {
+    const orderedList = results();
+    const thing = balanceBranch(orderedList);
+    return thing;
+}
+
+function balanceBranch(array) {
+    if (array.length === 0) {
+        return [];
+    }
+    if (array.length === 1) {
+        return [[], array[0], []];
+    }
+
+    const index = Math.floor(array.length / 2)
+    const front = array.slice(0, index)
+    const back = array.slice(index + 1);
+
+    return [balanceBranch(front), array[index], balanceBranch(back)]
+
+}
+
+
+
 function results() {
-    const thing = tree.toString().split(',').filter(x => x);
+    return tree.toString().split(',').filter(x => x);
+}
+
+function resultDisplay() {
+    const thing = results();
     thing.reverse();
     if (showAll) {
-        return thing.map((x, i) => `<span>#${i + 1}</span>` + getImageById(x)).join('<br>');
+        return thing.map((x, i) => `<span>#${i + 1}</span><br>` + getImageById(x)).join('<br>');
     }
-    return thing.slice(0, 10).map((x, i) => `<span>#${i + 1}</span>` + getImageById(x)).join('<br>');
+    return thing.slice(0, 10).map((x, i) => `<span>#${i + 1}</span><br>` + getImageById(x)).join('<br>');
 }
 
 function redoResults() {
-    console.log('stuff');
     showAll = !showAll;
-    document.getElementById('results').innerHTML = results();
+    document.getElementById('results').innerHTML = resultDisplay();
 }
 
 function getImageById(id) {
     return `<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png">`
 }
+
 
 init(898);
