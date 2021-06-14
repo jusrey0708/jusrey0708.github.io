@@ -131,7 +131,7 @@ function redoResults() {
 }
 
 function loadNameJSON() {
-    nameMap = JSON.parse(window.names)
+    nameMap = window.names;
 }
 
 function getImageById(id) {
