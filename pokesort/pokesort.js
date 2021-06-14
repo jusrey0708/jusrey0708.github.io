@@ -1,7 +1,7 @@
 all = [];
 tree = [];
 choice = 0;
-n=3
+n=898
 
 
 function init() {
