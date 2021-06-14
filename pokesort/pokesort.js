@@ -2,6 +2,7 @@ all = [];
 tree = [];
 choice = 0;
 n=898
+showAll = false;
 
 
 function init() {
@@ -16,14 +17,12 @@ function init() {
         all.splice(0, 1);
 
         const initialCurrent = goRando();
-
         tree = [[], initialCurrent, []];
-        currentBranch = tree;
-
+        
         choice = goRando();
     }
-
-    showAll = false;
+    
+    currentBranch = tree;
 
     document.getElementById('current').style.visibility = "visible";
     document.getElementById('option').style.visibility = "visible";
