@@ -1,32 +1,49 @@
-function init(n) {
+all = [];
+tree = [];
+choice = 0;
+n=3
 
-    // const all = Array(899);
-    all = Array(n + 1).fill(0);
-    all.forEach((x, i) => all[i] = i);
 
-    goRando = () => {
-        const index = Math.floor(Math.random() * all.length);
-        const rando = all[index];
-        all.splice(index, 1);
-        const percentDone = (100 - (all.length / n) * 100).toFixed(2);
-        document.getElementById('percent').innerHTML = `~${percentDone}% complete`
-        return rando;
+function init() {
+    const locals = getLocalStorage();
+    if (locals) {
+        all = locals.all;
+        tree = locals.tree;
+        choice = locals.choice;
+    } else {
+        all = Array(n + 1).fill(0);
+        all.forEach((x, i) => all[i] = i);
+        all.splice(0, 1);
+
+        const initialCurrent = goRando();
+
+        tree = [[], initialCurrent, []];
+        currentBranch = tree;
+
+        choice = goRando();
     }
 
-    const initialCurrent = goRando();
-    all.splice(0, 1);
-
-    tree = [[], initialCurrent, []];
-    currentBranch = tree;
     showAll = false;
 
+    document.getElementById('current').style.visibility = "visible";
+    document.getElementById('option').style.visibility = "visible";
 
-
-    choice = goRando();
-
-    document.getElementById('current').innerHTML = getImageById(tree[1]);
-    document.getElementById('option').innerHTML = getImageById(choice);
+    if (choice != undefined) {
+        document.getElementById('current').innerHTML = getImageById(tree[1]);
+        document.getElementById('option').innerHTML = getImageById(choice);
+    } else {
+        document.getElementById('current').style.visibility = "hidden";
+        document.getElementById('option').style.visibility = "hidden";
+    }
     document.getElementById('results').innerHTML = resultDisplay();
+}
+
+function goRando() {
+    console.log(all);
+    const index = Math.floor(Math.random() * all.length);
+    const rando = all[index];
+    all.splice(index, 1);
+    return rando;
 }
 
 
@@ -52,6 +69,7 @@ function handleLess() {
 
 function handleNewCurrent() {
     document.getElementById('results').innerHTML = resultDisplay();
+    document.getElementById('percent').innerHTML = `${n-all.length}/${n} ranked`
     choice = goRando();
     tree = rebalanceTree();
     currentBranch = tree;
@@ -59,11 +77,18 @@ function handleNewCurrent() {
         document.getElementById('current').innerHTML = getImageById(tree[1]);
         document.getElementById('option').innerHTML = getImageById(choice);
     } else {
-        document.getElementById('current').innerHTML = 'done';
-        document.getElementById('option').innerHTML = 'done';
-        document.getElementById('less').disabled = true;
-        document.getElementById('more').disabled = true;
+        document.getElementById('current').style.visibility = "hidden";
+        document.getElementById('option').style.visibility = "hidden";
     }
+    setLocalStorage();
+}
+
+function setLocalStorage() {
+    localStorage.setItem('poke-stuff', JSON.stringify({ tree, all, choice }));
+}
+
+function getLocalStorage() {
+    return JSON.parse(localStorage.getItem('poke-stuff'));
 }
 
 function rebalanceTree() {
@@ -113,4 +138,4 @@ function getImageById(id) {
 }
 
 
-init(898);
+init();

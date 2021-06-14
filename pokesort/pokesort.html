@@ -3,6 +3,7 @@
 </head>
 
 <body>
+    <a id='reset' class='reset' onclick="localStorage.removeItem('poke-stuff'); init();"> RESET</a>
 
     <div class="row">
         <div class="column" id="option" onclick="handleMore()"></div>
@@ -14,6 +15,7 @@
         <br>
         <span > This WILL take a while. </span>
         <span id='percent'></span>
+        <br>
     </div>
 
     <hr>
