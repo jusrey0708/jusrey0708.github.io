@@ -3,7 +3,8 @@
 </head>
 
 <body>
-    <a id='reset' class='reset' onclick="localStorage.removeItem('poke-stuff'); init();"> RESET</a>
+
+    <a id='reset' onclick="localStorage.removeItem('poke-stuff'); init();"> RESET</a>
 
     <div class="row">
         <div class="column" id="option" onclick="handleMore()"></div>
@@ -14,7 +15,6 @@
         <span > Click the one you like more.</span>
         <br>
         <span > This WILL take a while. </span>
-        <span id='percent'></span>
         <br>
     </div>
 
@@ -25,4 +25,5 @@
 
 </body>
 
+<script type="text/javascript" src="names.js"></script>
 <script type="text/javascript" src="pokesort.js"></script>

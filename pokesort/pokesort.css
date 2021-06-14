@@ -3,8 +3,32 @@
     display: flex;
     flex-direction: row;
 }
+#option, #current, .result{
+    border: 1px solid black;
+    padding: 10px;
+    margin: 5px;
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-.reset {
+
+#reset {
     color:blue;
     text-decoration: underline;
+}
+
+#results {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.ranking-label {
+    align-self: flex-start;
+}
+
+.name-label {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }

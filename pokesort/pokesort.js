@@ -1,9 +1,9 @@
 all = [];
 tree = [];
 choice = 0;
-n=898
+n = 898
 showAll = false;
-
+nameMap = {};
 
 function init() {
     const locals = getLocalStorage();
@@ -18,18 +18,18 @@ function init() {
 
         const initialCurrent = goRando();
         tree = [[], initialCurrent, []];
-        
+
         choice = goRando();
     }
-    
+
     currentBranch = tree;
 
     document.getElementById('current').style.visibility = "visible";
     document.getElementById('option').style.visibility = "visible";
 
     if (choice != undefined) {
-        document.getElementById('current').innerHTML = getImageById(tree[1]);
-        document.getElementById('option').innerHTML = getImageById(choice);
+        document.getElementById('current').innerHTML = getDataById(tree[1]);
+        document.getElementById('option').innerHTML = getDataById(choice);
     } else {
         document.getElementById('current').style.visibility = "hidden";
         document.getElementById('option').style.visibility = "hidden";
@@ -51,7 +51,7 @@ function handleMore() {
         handleNewCurrent();
     } else {
         currentBranch = currentBranch[2];
-        document.getElementById('current').innerHTML = getImageById(currentBranch[1]);
+        document.getElementById('current').innerHTML = getDataById(currentBranch[1]);
     }
 }
 
@@ -61,19 +61,18 @@ function handleLess() {
         handleNewCurrent();
     } else {
         currentBranch = currentBranch[0];
-        document.getElementById('current').innerHTML = getImageById(currentBranch[1]);
+        document.getElementById('current').innerHTML = getDataById(currentBranch[1]);
     }
 }
 
 function handleNewCurrent() {
     document.getElementById('results').innerHTML = resultDisplay();
-    document.getElementById('percent').innerHTML = `${n-all.length}/${n} ranked`
     choice = goRando();
     tree = rebalanceTree();
     currentBranch = tree;
     if (choice != undefined) {
-        document.getElementById('current').innerHTML = getImageById(tree[1]);
-        document.getElementById('option').innerHTML = getImageById(choice);
+        document.getElementById('current').innerHTML = getDataById(tree[1]);
+        document.getElementById('option').innerHTML = getDataById(choice);
     } else {
         document.getElementById('current').style.visibility = "hidden";
         document.getElementById('option').style.visibility = "hidden";
@@ -118,12 +117,12 @@ function results() {
 }
 
 function resultDisplay() {
-    const thing = results();
+    let thing = results();
     thing.reverse();
-    if (showAll) {
-        return thing.map((x, i) => `<span>#${i + 1}</span><br>` + getImageById(x)).join('<br>');
+    if (!showAll) {
+        thing = thing.slice(0,10);
     }
-    return thing.slice(0, 10).map((x, i) => `<span>#${i + 1}</span><br>` + getImageById(x)).join('<br>');
+    return thing.map((x, i) => getResultHtml(i,x)).join('<br>');
 }
 
 function redoResults() {
@@ -131,9 +130,22 @@ function redoResults() {
     document.getElementById('results').innerHTML = resultDisplay();
 }
 
+function loadNameJSON() {
+    nameMap = JSON.parse(window.names)
+}
+
 function getImageById(id) {
-    return `<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png">`
+    return `<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png">`;
+}
+
+function getDataById(id) {
+    return getImageById(id) + `<br><span class="name-label">${nameMap[id].toUpperCase()}</span>`;
+}
+
+function getResultHtml(i,x) {
+    return `<div class='result'><span class="ranking-label">#${i + 1}</span><br>${getDataById(x)}</div>`
 }
 
 
+loadNameJSON()
 init();
