@@ -4,26 +4,41 @@
 
 <body>
 
-    <a id='reset' onclick="localStorage.removeItem('poke-stuff'); init();"> RESET</a>
 
     <div class="row">
         <div class="column" id="option" onclick="handleMore()"></div>
         <div class="column" id="current" onclick="handleLess()"></div>
+        <div class="column" id="options">
+        
+            <span>Making changes to these settings will reset your progress.</span>
+            <br>
+            <input type="checkbox" id="alt" name="alt" checked="showAlts" onclick="reset()">
+            <label for="alt"> Show Alternative Forms</label>
+            <br>
+            <input type="checkbox" id="regional" name="regional" checked="showRegional" onclick="reset()">
+            <label for="regional"> Show Regional Variants</label>
+            <br>
+            <input type="checkbox" id="mega" name="mega" checked="showMega" onclick="reset()">
+            <label for="mega"> Show Mega Forms</label>
+            <br>
+            <input type="checkbox" id="gmax" name="gmax" checked="showGMax" onclick="reset()">
+            <label for="gmax"> Show GMax Forms</label>
+            <br>
+            <a id='reset' onclick="reset()"> RESET</a>
+        </div>
     </div>
     
     <div class="instructions">
-        <span > Click the one you like more.</span>
-        <br>
-        <span > This WILL take a while. </span>
-        <br>
+        <span > Click the one you like more. The whole process will take some time.</span>
     </div>
 
     <hr>
     <input type="checkbox" id="result" name="result" onchange="redoResults()">
     <label for="result"> Show Full Results (so far)</label><br>
+    <span id="percent"></span>
     <div id="results"></div>
 
 </body>
 
-<script type="text/javascript" src="names.js"></script>
+<script type="text/javascript" src="pokemon.js"></script>
 <script type="text/javascript" src="pokesort.js"></script>

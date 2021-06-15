@@ -1,9 +1,13 @@
 all = [];
 tree = [];
 choice = 0;
-n = 898
+n = 0
 showAll = false;
-nameMap = {};
+
+showAlts = true;
+showRegional = true;
+showMega = true;
+showGMax = true;
 
 function init() {
     const locals = getLocalStorage();
@@ -11,13 +15,27 @@ function init() {
         all = locals.all;
         tree = locals.tree;
         choice = locals.choice;
+        n = locals.n
+        document.getElementById('percent').innerHTML = `${n - all.length - 1}/${n}`;
     } else {
-        all = Array(n + 1).fill(0);
-        all.forEach((x, i) => all[i] = i);
-        all.splice(0, 1);
+
+        const baseIds = window.pokemon.filter(x => !x.alt && !x.region && !x.mega && !x.gmax).map(x => x.id);
+        const altIds = window.pokemon.filter(x => x.alt).map(x => x.id);
+        const regionalIds = window.pokemon.filter(x => x.region).map(x => x.id);
+        const megaIds = window.pokemon.filter(x => x.mega).map(x => x.id);
+        const gmaxIds = window.pokemon.filter(x => x.gmax).map(x => x.id);
+
+        all = [...baseIds];
+        all = showAlts ? [...all, ...altIds] : all;
+        all = showRegional ? [...all, ...regionalIds] : all;
+        all = showMega ? [...all, ...megaIds] : all;
+        all = showGMax ? [...all, ...gmaxIds] : all;
+
+        n = all.length;
 
         const initialCurrent = goRando();
         tree = [[], initialCurrent, []];
+        document.getElementById('percent').innerHTML = `1/${n}`;
 
         choice = goRando();
     }
@@ -35,6 +53,11 @@ function init() {
         document.getElementById('option').style.visibility = "hidden";
     }
     document.getElementById('results').innerHTML = resultDisplay();
+}
+
+function reset() {
+    localStorage.removeItem('poke-stuff');
+    init();
 }
 
 function goRando() {
@@ -67,6 +90,8 @@ function handleLess() {
 
 function handleNewCurrent() {
     document.getElementById('results').innerHTML = resultDisplay();
+    document.getElementById('percent').innerHTML = `${n - all.length}/${n}`;
+
     choice = goRando();
     tree = rebalanceTree();
     currentBranch = tree;
@@ -81,7 +106,7 @@ function handleNewCurrent() {
 }
 
 function setLocalStorage() {
-    localStorage.setItem('poke-stuff', JSON.stringify({ tree, all, choice }));
+    localStorage.setItem('poke-stuff', JSON.stringify({ tree, all, choice, n }));
 }
 
 function getLocalStorage() {
@@ -90,8 +115,7 @@ function getLocalStorage() {
 
 function rebalanceTree() {
     const orderedList = results();
-    const thing = balanceBranch(orderedList);
-    return thing;
+    return balanceBranch(orderedList);
 }
 
 function balanceBranch(array) {
@@ -107,10 +131,7 @@ function balanceBranch(array) {
     const back = array.slice(index + 1);
 
     return [balanceBranch(front), array[index], balanceBranch(back)]
-
 }
-
-
 
 function results() {
     return tree.toString().split(',').filter(x => x);
@@ -120,9 +141,9 @@ function resultDisplay() {
     let thing = results();
     thing.reverse();
     if (!showAll) {
-        thing = thing.slice(0,10);
+        thing = thing.slice(0, 10);
     }
-    return thing.map((x, i) => getResultHtml(i,x)).join('<br>');
+    return thing.map((id, rank) => getResultHtml(id, rank)).join('<br>');
 }
 
 function redoResults() {
@@ -130,22 +151,21 @@ function redoResults() {
     document.getElementById('results').innerHTML = resultDisplay();
 }
 
-function loadNameJSON() {
-    nameMap = window.names;
-}
-
-function getImageById(id) {
-    return `<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png">`;
-}
-
 function getDataById(id) {
-    return getImageById(id) + `<br><span class="name-label">${nameMap[id].toUpperCase()}</span>`;
+    // id is a string here so using "==" to match string to number
+    const data = window.pokemon.find(x => x.id == id);
+    return `<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png">
+            <br>
+            <span class="name-label">${data.name.toUpperCase()}</span>`;
 }
 
-function getResultHtml(i,x) {
-    return `<div class='result'><span class="ranking-label">#${i + 1}</span><br>${getDataById(x)}</div>`
+function getResultHtml(id, rank) {
+    return `<div class='result'>
+                <span class="ranking-label">#${rank + 1}</span>
+                <br>
+                ${getDataById(id)}
+            </div>`
 }
 
 
-loadNameJSON()
 init();
