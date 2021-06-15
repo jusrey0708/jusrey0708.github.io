@@ -3024,7 +3024,7 @@ pokemon = [
         id:  720
     },
     {
-        name:  "hoopa-unbound",
+        name:  "hoopa (unbound)",
         alt:  true,
         id:  10086
     },
@@ -3261,7 +3261,7 @@ pokemon = [
         id:  771
     },
     {
-        name:  "type-null",
+        name:  "type: null",
         id:  772
     },
     {
@@ -3382,12 +3382,12 @@ pokemon = [
         id:  800
     },
     {
-        name:  "necrozma (dusk)",
+        name:  "necrozma (dusk mane)",
         alt:  true,
         id:  10155
     },
     {
-        name:  "necrozma (dawn)",
+        name:  "necrozma (dawn wings)",
         alt:  true,
         id:  10156
     },
