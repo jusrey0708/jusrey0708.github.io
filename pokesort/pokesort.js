@@ -4,10 +4,10 @@ choice = 0;
 n = 0
 showAll = false;
 
-showAlts = true;
-showRegional = true;
-showMega = true;
-showGMax = true;
+showAlts = false;
+showRegional = false;
+showMega = false;
+showGMax = false;
 
 function init() {
     const locals = getLocalStorage();
@@ -17,6 +17,10 @@ function init() {
         choice = locals.choice;
         n = locals.n
         document.getElementById('percent').innerHTML = `${n - all.length - 1}/${n}`;
+        showAlts = document.getElementById('alt').checked = locals.showAlts;
+        showRegional = document.getElementById('regional').checked= locals.showRegional;
+        showMega = document.getElementById('mega').checked= locals.showMega;
+        showGMax = document.getElementById('gmax').checked= locals.showGMax;
     } else {
 
         const baseIds = window.pokemon.filter(x => !x.alt && !x.region && !x.mega && !x.gmax).map(x => x.id);
@@ -32,12 +36,14 @@ function init() {
         all = showGMax ? [...all, ...gmaxIds] : all;
 
         n = all.length;
+        console.log(all.length, showAlts, showRegional, showMega, showGMax);
 
         const initialCurrent = goRando();
         tree = [[], initialCurrent, []];
         document.getElementById('percent').innerHTML = `1/${n}`;
 
         choice = goRando();
+        setLocalStorage();
     }
 
     currentBranch = tree;
@@ -57,6 +63,10 @@ function init() {
 
 function reset() {
     localStorage.removeItem('poke-stuff');
+    showAlts = document.getElementById('alt').checked;
+    showRegional = document.getElementById('regional').checked;
+    showMega = document.getElementById('mega').checked;
+    showGMax = document.getElementById('gmax').checked;
     init();
 }
 
@@ -106,7 +116,16 @@ function handleNewCurrent() {
 }
 
 function setLocalStorage() {
-    localStorage.setItem('poke-stuff', JSON.stringify({ tree, all, choice, n }));
+    localStorage.setItem('poke-stuff', JSON.stringify({
+        tree,
+        all,
+        choice,
+        n,
+        showAlts,
+        showRegional,
+        showMega,
+        showGMax
+    }));
 }
 
 function getLocalStorage() {
